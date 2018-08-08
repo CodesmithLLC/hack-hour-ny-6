@@ -27,7 +27,7 @@ function fizzbuzz(num) {
             num[i] = 'buzz';
         }
     }
-    return num
+    return num;
 }
 
 module.exports = fizzbuzz;
