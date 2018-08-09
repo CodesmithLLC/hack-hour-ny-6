@@ -20,30 +20,13 @@
 
 /* Solution 2 */
 const fizzbuzz = num =>
+  num >= 0 &&
   [num]
     .map(num => [...Array(num + 1).keys()])
     .reduce((acc, arrayOfArray) => acc.concat(arrayOfArray), [])
     .map((num, i) => (num % 3 === 0 && num % 5 === 0 ? "fizzbuzz" : i))
-    .map((val, i) => (val % 3 === 0 && typeof val === "number" ? "fizz" : val))
-    .map((val, i) => (val % 5 === 0 && typeof val === "number" ? "buzz" : val))
+    .map(val => (val % 3 === 0 && typeof val === "number" ? "fizz" : val))
+    .map(val => (val % 5 === 0 && typeof val === "number" ? "buzz" : val))
 
-/* Solution 1 */
-// function fizzbuzz1(num) {
-//   let acc = []
-
-//   for (let i = 0; i <= num; i++) {
-//     if (i % 3 === 0 && i % 5 === 0) {
-//       acc = [...acc, "fizzbuzz"]
-//     } else if (i % 3 === 0) {
-//       acc = [...acc, "fizz"]
-//     } else if (i % 5 === 0) {
-//       acc = [...acc, "buzz"]
-//     } else {
-//       acc = [...acc, i]
-//     }
-//   }
-
-//   return acc
-// }
-
+// console.log(fizzbuzz(30))
 module.exports = fizzbuzz
