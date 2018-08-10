@@ -14,8 +14,20 @@
 */
 
 function drawStairs(n) {
-
+    let aster = '';
+    let space = ' ';
+    for (let i =1; i<= n; i++){
+        let arr = new Array(n).fill(' ');
+        let aster = Math.floor(arr.length)/2
+        
+            if (i === n){
+                console.log(aster);
+            }else{
+                space += ' ';
+                console.log(" " + aster + space)
+            }
+    }
 }
-
-
+console.log(new Array().fill('*'));
+drawStairs(10)
 module.exports = drawStairs;
