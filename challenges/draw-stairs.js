@@ -14,9 +14,8 @@
 */
 
 function drawStairs(n) {
-    let chars = '*';
     for(let i = 1; i <= n; i++) {
-        let stairs = new Array(6);
+        let stairs = new Array(n);
         stairs.fill(' ', 0, n-i);
         stairs.fill('*', n-i, n);
         console.log(stairs.join(''));
