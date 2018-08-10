@@ -11,24 +11,7 @@
  *****
 ******
 */
-
-function drawStairs(n, stop = n) {
-  if (!stop) return; 
-  let i = 0;
-  let nextStr = '';
-  while(i <= n) {
-    if (i < stop) {
-      nextStr += ' ';
-    } else {
-      nextStr += '*';
-    }
-    i += 1;
-  }
-  console.log(nextStr);
-  drawStairs(n, stop - 1);
-}
-
-function drawStairs2(n, stop = n - 1, str = '') {
+function drawStairs(n, stop = n - 1, str = '') {
   if(stop < 0) return;
   if(str.length === n){
     console.log(str);
@@ -41,6 +24,5 @@ function drawStairs2(n, stop = n - 1, str = '') {
     return drawStairs2(n, stop, str += '*')
   }
 }
-drawStairs2(6);
 
 module.exports = drawStairs;
