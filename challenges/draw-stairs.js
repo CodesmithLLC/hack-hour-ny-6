@@ -14,21 +14,14 @@
 */
 
 function drawStairs(n) {
-  let acc = ""
-  let counter = 1
+  console.log(generateLevel())
 
-  acc = generateLevel(counter, acc)
-
-  function generateLevel(counter, acc) {
+  function generateLevel(counter = 1, acc = "") {
     if (counter === n) {
       return (acc += "*".repeat(counter) + "\n")
     }
     return generateLevel(counter + 1, (acc += " ".repeat(n - counter) + "*".repeat(counter) + "\n"))
   }
-
-  console.log(acc)
 }
-
-// drawStairs(10)
 
 module.exports = drawStairs
