@@ -15,17 +15,19 @@ function modemean(array) {
     for(let i = 0; i < array.length; i++) {
       count[array[i]] ? count[array[i]]++ : count[array[i]] = 1;
     }
+
     let mode = array[0];
     let maxFreq = 0;
+
     for(let num in count) {
       if(count[num] >= maxFreq) {
         mode = Math.max(num, mode);
         maxFreq = count[num];
       }
     }
-    let mean = Math.floor(array.reduce(function (a, b) {
-      return a + b;
-    }) / array.length);
+
+    let mean = Math.floor(array.reduce((a, b) => a + b) / array.length);
+    
     console.log(mean, mode);
     return mean === mode;
   }
