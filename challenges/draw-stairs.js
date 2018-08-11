@@ -15,7 +15,6 @@
 
 function drawStairs(n) {
   console.log(generateLevel())
-
   function generateLevel(counter = 1, acc = "") {
     if (counter === n) {
       return (acc += "*".repeat(counter) + "\n")
