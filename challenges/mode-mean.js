@@ -19,13 +19,15 @@ function modemean(array) {
     let maxFreq = 0;
     for(let num in count) {
       if(count[num] >= maxFreq) {
-        mode = Math.max(num, most);
+        mode = Math.max(num, mode);
         maxFreq = count[num];
       }
     }
-    return Math.floor(array.reduce(function (a, b) {
+    let mean = Math.floor(array.reduce(function (a, b) {
       return a + b;
-    }) / array.length) === moded;
-}
+    }) / array.length);
+    console.log(mean, mode);
+    return mean === mode;
+  }
 
 module.exports = modemean;
