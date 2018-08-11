@@ -37,5 +37,4 @@ function modemean(array) {
         return false;
     }
 }
-console.log(modemean([0,1,3,2,4]))
-// module.exports = modemean;
+module.exports = modemean;
