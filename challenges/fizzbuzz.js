@@ -20,26 +20,18 @@ function fizzbuzz(num) {
     // testing cases:
     // num is negative or 0
     if (num <= 0) {
-        throw console.error("Can't be a number smaller than or equal to zero.");
-        
+        //throw console.error("Can't be a number smaller than or equal to zero.");
+      throw Error('no negative numbers');
     }
 
     // create an array to store the number or strings
-    let final = [];
+    const array = [];
     // loop through from 1 to num
     for ( let i = 1; i < num; i += 1) {
-        if (i % 3 === 0 && i % 5 === 0) { // number is divisible by 5 and by 3
-            final.push('fizzbuzz');
-        } else if (i % 3 === 0) { //  number is just divisible by 3
-            final.push('fizz');
-        } else if (i % 5 === 0) { // number is just divisible by 5
-            final.push('buzz');
-        } else {
-            final.push(i); // its just a number, that isn't divisible by 3 or 5
-        }
+      array.push(i % 3 === 0 && i % 5 === 0? 'fizzbuzz' : i % 3 === 0? 'fizz' : i % 5 === 0? 'buzz' : i);
     }
 
-    return final; // return the array
+    return array; // return the array
 }
 
 module.exports = fizzbuzz;

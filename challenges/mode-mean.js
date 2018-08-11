@@ -11,6 +11,7 @@
 
 
 function modemean(array) {
+
   // mode -> frequent finding of a number
   let mode = function(array) {
     let counter = 1;
@@ -39,6 +40,7 @@ function modemean(array) {
 
     return highest;
   };
+
   // mean -> add all and divide by the length
   let mean = Math.floor(array.reduce((accum, cur) => {
     return accum = accum + curr;
