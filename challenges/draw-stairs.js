@@ -14,21 +14,12 @@
 */
 
 function drawStairs(n) {
-    // nested for loop
-    // row loop
-    let print_row = '';
-    for (let i = 0; i < n; i += 1) {
-        print_row += '';
-
-        if (i !== n - 1) {
-            print_row += '*';
-        }
-    }
-    console.log(print_row);
+  for (let i = 1; i <= n; i += 1) {
+    console.log(' '.repeat(n - i) + '*'.repeat(i));
+  }
 }
 
 
 module.exports = drawStairs;
 
 // LOCAL DEBUGGER
-drawStairs(6);
