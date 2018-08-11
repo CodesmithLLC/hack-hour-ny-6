@@ -19,18 +19,12 @@ function drawStairs(n) {
   const numStar = 0;
   const numSpace = 0
 
-  // const spaces = space.repeat(10)
-  // const stars = '*'
-  //
-  // console.log(spaces + stars);
-
   for (let i=n, j=1; i > 0; i--, j++){
     const spaces = space.repeat(i-1)
     const stars = star.repeat(j)
 
     console.log(spaces + stars);
   }
-//  console.log(star.repeat(10));
 }
 
 drawStairs(20)
