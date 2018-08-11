@@ -11,32 +11,34 @@
 
 
 function modemean(array) {
-    let sum = 0
-    let freq = {};
+    let sum = 0;
+    let numFrequency = {};
     
-    //store element frequency in object
+    //Store element occurrence in numFrequency object
+    //Also add to sum
     for( let i =0; i < array.length; i++) {
-        let currElement = array[i]
+        let currElement = array[i];
         sum += currElement;
-        if(freq[currElement]){
-            freq[currElement]++; 
+        if(numFrequency[currElement]){
+            numFrequency[currElement]++; 
         } else {
-            freq[currElement] = 1;
+            numFrequency[currElement] = 1;
         }
     }
     
-    //find the max value in the frequency object 
-    let maxValue = Math.max(...Object.values(freq));
+    //Find the max value in the numFrequency object 
+    let maxValue = Math.max(...Object.values(numFrequency));
 
-    //Filter out keys that match the max value (the mode)
-    let mode =  Object.keys(freq).filter( ele => freq[ele] === maxValue);
+    //Filter out keys(numbers) who's frequency match the max value (the mode)
+    let mode =  Object.keys(numFrequency).filter( element => numFrequency[element] === maxValue);
 
+    //Find average
     let avg = Math.floor(sum / array.length);
 
-    // Return true if avg equals max of mode
+    //Return true if avg equals max of mode
     return avg === Math.max(...mode);
 }
 
-// console.log(modemean([1,2,3,2,1,9]))
+// console.log(modemean([3,3,4,5]))
 
 module.exports = modemean;
