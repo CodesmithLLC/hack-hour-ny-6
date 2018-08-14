@@ -64,6 +64,5 @@ d.next = e;
 e.next = f;
 f.next = g;
 
-console.log(kthToLastNode(2, a));
 
-// module.exports = {Node: Node, kthToLastNode: kthToLastNode};
+module.exports = {Node: Node, kthToLastNode: kthToLastNode};
