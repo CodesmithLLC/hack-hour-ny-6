@@ -22,7 +22,7 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
-  if( !head){
+  if(!head){
     return "Not valid list!";
   }
 
@@ -37,6 +37,10 @@ function kthToLastNode(k, head) {
   while( currNode.next !== null){
     itemsInList++;
     currNode = currNode.next;
+  }
+  
+  if( k === 1){
+    return currNode.value;
   }
   
   currNode = head;
