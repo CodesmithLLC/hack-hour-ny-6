@@ -14,6 +14,7 @@
 // d.next = e
 
 // console.log(kthToLastNode(3, a)) // -> returns 'D' (the value on the second to last node)
+// console.log({ Node: Node, kthToLastNode: kthToLastNode })
 
 function Node(val) {
   this.value = val
