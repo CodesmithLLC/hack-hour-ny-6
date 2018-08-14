@@ -5,7 +5,7 @@
  * const a = new Node('A');
  * const b = new Node('B');
  * const c = new Node('C');
- * const d = new Node('D');
+ * const d = new Node('D'); 
  * const e = new Node('E');
  *
  * a.next = b;
@@ -14,6 +14,9 @@
  * d.next = e;
  *
  * kthToLastNode(2, a); -> returns 'D' (the value on the second to last node)
+ // kth(3, a) => C
+ // kth(1, a) => E
+
  */
 
 function Node(val) {
@@ -22,7 +25,23 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+  let totalNodes = 0;
+  let cur = head
 
+  while (cur.next !== null) {
+  	cur = cur.next 
+  	totalNodes++
+  }
+
+  totalNodes = totalNodes + 1
+
+  let targetPos = totalNodes + 1 - k 
+  let targetNode = head
+  for (i = 1; i < targetPos; i++) {
+  	targetNode = targetNode.next 
+  }
+
+  return targetNode.value
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
