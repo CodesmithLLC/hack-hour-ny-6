@@ -15,9 +15,7 @@ function modemean(array) {
   // -----
 
   function getMean(array) {
-    return Math.floor(
-      array.reduce((num, element) => (num += element), 0) / array.filter(num => num !== 0).length
-    )
+    return Math.floor(array.reduce((num, element) => (num += element), 0) / array.length)
   }
 
   function getMode(array) {
