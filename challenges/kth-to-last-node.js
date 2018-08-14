@@ -22,7 +22,26 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+  // i would need to travrse through the linked list
+  // using a while loop -> condition: while (a.next !== null)
+  // but doens't work
+  // FIXED: i need to change the head to the next
+  //
+  // need a counter to keep track of where we are in the start of the while loop
+  let counter = 0;
 
+  // traverse through the node
+  while (head.next !== null) {
+    // when the counter is equal to the position of the node
+    if (counter === k) {
+      return head.next.value; // return the next value of the node
+    }
+
+    // this will always check the while loop condition
+    head = head.next;
+    counter++; // increment the counter when the head is assigned to the next
+  }
+  return undefined; // return undefined if nothing is found
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
