@@ -10,12 +10,19 @@
   ****
  *****
 ******
-
 */
-
-function drawStairs(n) {
-
+function drawStairs(n, stop = n - 1, str = '') {
+  if(stop < 0) return;
+  if(str.length === n){
+    console.log(str);
+    return drawStairs2(n, stop - 1, str = '');
+  }
+  if(str.length < stop) {
+    return drawStairs2(n, stop, str += ' ')
+  }
+  if(str.length >= stop) {
+    return drawStairs2(n, stop, str += '*')
+  }
 }
-
 
 module.exports = drawStairs;
