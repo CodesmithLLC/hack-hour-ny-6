@@ -17,7 +17,21 @@
 //                     16 ]
 
 function fizzbuzz(num) {
+    // testing cases:
+    // num is negative or 0
+    if (num <= 0) {
+        //throw console.error("Can't be a number smaller than or equal to zero.");
+      throw Error('no negative numbers');
+    }
 
+    // create an array to store the number or strings
+    const array = [];
+    // loop through from 1 to num
+    for ( let i = 1; i < num; i += 1) {
+      array.push(i % 3 === 0 && i % 5 === 0? 'fizzbuzz' : i % 3 === 0? 'fizz' : i % 5 === 0? 'buzz' : i);
+    }
+
+    return array; // return the array
 }
 
 module.exports = fizzbuzz;
