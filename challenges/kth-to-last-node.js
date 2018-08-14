@@ -22,7 +22,28 @@ function Node(val) {
 }
 
 function kthToLastNode(k, head) {
+  let counter = 0;
+  let node = head;
 
+  // go over whole Llist, get length
+  while(node.next !== null) {
+    node = node.next;
+    counter++
+    //console.log("counter = ", counter);
+  }
+
+  let nodeToGet = counter - k + 1; // distance from head to node k
+
+  // go back over Llist, get value of node k
+  node = head;
+
+  while(nodeToGet) {
+    node = node.next;
+    nodeToGet--;
+    //console.log("node to get = ", nodeToGet);
+  }
+  // return node
+  return node.value;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
