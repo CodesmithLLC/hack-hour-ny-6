@@ -16,8 +16,19 @@
 //                     'fizzbuzz',
 //                     16 ]
 
-function fizzbuzz(num) {
 
+function fizzbuzz(num) {
+  const retArray = [];
+  for (let i = 1; i <= num; i++) {
+    if (i % 3 === 0)
+      if (i % 5 === 0) retArray.push('fizzbuzz')
+      else retArray.push('fizz');
+
+    else if (i % 5 === 0) retArray.push('buzz');
+    else retArray.push(i);
+  }
+  return retArray;
 }
+
 
 module.exports = fizzbuzz;
