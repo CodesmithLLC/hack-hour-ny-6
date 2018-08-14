@@ -26,14 +26,13 @@ function kthToLastNode(k, head) {
   let index = 0;
 
   for(let node in head) {
-
     while(head.next !== null) {
       index++;
       LinkedListIndexed[index] = Object.assign(head);
       head = head.next; 
     }
   }
-  return LinkedList[index - 1].next.value;
+  return LinkedList[index - k].next.value;
 }
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
