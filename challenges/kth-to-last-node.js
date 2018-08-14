@@ -29,7 +29,7 @@ function kthToLastNode(k, head) {
   while(node.next !== null) {
     node = node.next;
     counter++
-    console.log("counter = ", counter);
+    //console.log("counter = ", counter);
   }
 
   let nodeToGet = counter - k + 1; // distance from head to node k
@@ -40,7 +40,7 @@ function kthToLastNode(k, head) {
   while(nodeToGet) {
     node = node.next;
     nodeToGet--;
-    console.log("node to get = ", nodeToGet);
+    //console.log("node to get = ", nodeToGet);
   }
   // return node
   return node.value;
