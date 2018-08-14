@@ -15,6 +15,7 @@
 
 String.prototype.repeat = function(length) {
     return Array(length + 1).join(this);
+    
    };
 
 function drawStairs(n) {
