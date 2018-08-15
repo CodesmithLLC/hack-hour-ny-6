@@ -24,7 +24,7 @@ function Node(val) {
 function kthToLastNode(k, head) {
   //return null if there is no head
   if(head === null || k < 1){
-    return undefined;
+    return null;
   }
   //establish pointer & counter
   let current = head;
