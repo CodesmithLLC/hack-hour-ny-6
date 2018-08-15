@@ -3,7 +3,10 @@
  */
 
 function pow(base, power) {
-
+    let arr = Array.from({length: power})
+    return arr.fill(base, 0, power).reduce( (prev, curr) => prev*curr);
 }
+
+console.log(pow(2,8));
 
 module.exports = pow;
