@@ -11,9 +11,9 @@ function pow(base, power) {
     if(power === 1) {
         return base;
     }
-  
+    
     // recursive case
-    return base * pow(base, power - 1);
+    return power < 0 ? 1 / base * pow(base, power - 1) : base * pow(base, power - 1);
   }
 
 module.exports = pow;
