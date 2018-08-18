@@ -12,11 +12,24 @@
  */
 
 function isSubstring(s1, s2) {
-  return s1.indexOf(s2) >= 0;
+  return s1.indexOf(s2) >= 0
 }
 
-function stringRotation(s1, s2) {
-
+function stringRotation(s1, s2, counter = s1.length, bool = true) {
+  if (s1.length !== s2.length) return false
+  if (s1 === s2) return true
+  if (counter === 0 && !bool) return false
+  if (counter === 0 && bool && s1 !== s2) return false
+  return stringRotation(s1, s2.slice(1) + s2[0], counter - 1, bool)
 }
 
-module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
+/* TDD */
+// console.log(stringRotation("hello", "hello"), "should be", true)
+// console.log(stringRotation("hello", "llohe"), "should be", true)
+// console.log(stringRotation("hello", "elloh"), "should be", true)
+// console.log(stringRotation("hello", "lohel"), "should be", true)
+// console.log(stringRotation("hello", "he"), "should be", false)
+// console.log(stringRotation("hello", "ollhe"), "should be", false)
+// console.log(stringRotation("hello", "ehllo"), "should be", false)
+
+module.exports = { isSubstring: isSubstring, stringRotation: stringRotation }
