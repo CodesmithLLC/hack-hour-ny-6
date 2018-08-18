@@ -23,7 +23,7 @@ function stringRotation(s1, s2) {
   // loop through
   let strArr = s1.split('');
 
-  for (let i = 0; i < strArr.length i += 1) {
+  for (let i = 0; i < strArr.length; i += 1) {
     strArr.push(str.unshift());
     if (isSubstring(strArr.join(''), s2)) return true;
   }
