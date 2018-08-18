@@ -15,8 +15,54 @@ function isSubstring(s1, s2) {
   return s1.indexOf(s2) >= 0;
 }
 
-function stringRotation(s1, s2) {
 
+// RECURSION ANSWER
+function stringRotation(s1,s2, count = s1.length) {
+  // Check if same length if not return false
+  if(s1.length !== s2.length) {
+    return false;
+  }
+  // Check if count (the amount of checks) is finished
+  if(count === 0) {
+    return false;
+  }
+  // Check s1 to s2
+  let check = isSubstring(s1,s2);
+  // If check is ever true then return true
+  if(check === true) {
+    return true;
+  }
+    // Hold first character to append to the end
+    let first = s1.substring(1)
+    // Append first character of string to the end
+    s1 = first + s1[0]
+    count--;
+    //loop check until s1.length
+    return stringRotation(s1,s2, count)
 }
+
+
+// // ANSWER THAT LOOPS OVER CALL
+// function stringRotation(s1, s2) {
+//   // Check if same length if not return false
+//   if(s1.length !== s2.length) {
+//     return false;
+//   }
+//   for(let i = 0; i < s1.length; i++) {
+//     // Check s1 to s2
+//     let check = isSubstring(s1,s2)
+//     // If check is ever true then return true
+//     if(check === true) {
+//       return true
+//     }
+//     // Hold first character to append to the end
+//     let first = s1.substring(1)
+//     // Append first character of string to the end
+//     s1 = first + s1[0]
+//     //loop check until s1.length
+//   }
+//   return false;
+// }
+
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
