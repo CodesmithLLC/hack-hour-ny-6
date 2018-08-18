@@ -14,10 +14,7 @@
  */
 
 function reverseInPlace(array) {
-    array.forEach(function(el, i, arr) {
-        array[i] = arr[-i];
-    })
-    return array;
+    return array.forEach((el, i, arr) => array[i] = arr[-i]);
 }
 
 module.exports = reverseInPlace;
