@@ -15,12 +15,11 @@ function isSubstring(s1, s2) {
   return s1.indexOf(s2) >= 0
 }
 
-function stringRotation(s1, s2, counter = s1.length, bool = true) {
+function stringRotation(s1, s2, counter = s1.length) {
   if (s1.length !== s2.length) return false
   if (s1 === s2) return true
-  if (counter === 0 && !bool) return false
-  if (counter === 0 && bool && s1 !== s2) return false
-  return stringRotation(s1, s2.slice(1) + s2[0], counter - 1, bool)
+  if (counter === 0 && s1 !== s2) return false
+  return stringRotation(s1, s2.slice(1) + s2[0], counter - 1)
 }
 
 /* TDD */
