@@ -16,6 +16,10 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
+
+  if (s1.length !== s2.length) {
+    return false;
+  }
   // select string indecies in all orders from 0 to length
   const newString = s1 + s1;
   let string3 = '';
