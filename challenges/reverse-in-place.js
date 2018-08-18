@@ -14,7 +14,7 @@
  */
 
 function reverseInPlace(array) {
-
+  if (!Array.isArray(array)) return undefined;
 }
 
 module.exports = reverseInPlace;
