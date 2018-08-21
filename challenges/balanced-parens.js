@@ -25,7 +25,37 @@
  */
 
 function balancedParens(input){
+  let copy = input.slice();
+  let hash = {};
+
+  function isBalanced( character, inverse, i ){
+    if(copy.lastIndexOf(inverse) > i){
+      hash[i] = copy.lastIndexOf(inverse);
+      copy = copy.slice(0, hash[i]);
+      return true;
+    } 
+  }
+
+  for( let i = 0; i< input.length ; i++){
+    if( input[i] === '('){
+      if(!isBalanced(input[i], ')', i)) return false;
+    }
+
+     if (input[i] === '{') {
+      if(!isBalanced(input[i], '}', i)) return false;
+     }
+
+     if(input[i] === '[') {
+      if(!isBalanced(input[i], ']', i)) return false;
+     }
+     else if ( input[i] === ')' || input[i] === '}' || input[i] === ']' && !Object.values(hash).includes(i) ) return false
+  }
+
+  if( Object.keys(hash) === undefined) return false;
+  return true;
 
 }
+
+console.log(balancedParens('(())'));
 
 module.exports = balancedParens;
