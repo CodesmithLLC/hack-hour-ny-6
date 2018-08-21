@@ -26,33 +26,38 @@
 
 function balancedParens(input){
     let brackArr = [3];
-    brackArr[0], brackArr[1], brackArr[2] = ''
+    brackArr[0] = 0 
+    brackArr[1] = 0 
+    brackArr[2] = 0
     for(let i = 0; i < input.length; i++) {
         if(input[i] === '(') {
-            brackArr[0] = input[i]
+            brackArr[0] = (brackArr[0] + 1)
         }
         if(input[i] === '{') {
-            brackArr[1] = input[i]
+            brackArr[1] = (brackArr[1] + 1)
         }
         if(input[i] === '[') {
-            brackArr[2] = input[i]
+            brackArr[2] = (brackArr[2] + 1)
         }
-        if(input[i] === ')' ) {
-            if(brackArr.includes('(')) {
-                brackArr[0] = ''
-            }
+        if(input[i] === ')' && brackArr[0] === 0) {
+            return false
         }
-        if(input[i] === '}') {
-            if(brackArr.includes('{')) {
-                brackArr[1] = ''
-            }
+        if(input[i] === ')' && brackArr[0] > 0) {
+            brackArr[0] = (brackArr[0] - 1)
         }
-        if(input[i] === ']') {
-            if(brackArr.includes('[')) {
-                brackArr[2] = ''
-            }
+        if(input[i] === '}' && brackArr[1] === 0) {
+            return false
+        }
+        if(input[i] === '}' && brackArr[1] > 0) {
+            brackArr[1] = (brackArr[1] - 1)
+        }
+        if(input[i] === ']' && brackArr[2] === 0) {
+            return false
+        }
+        if(input[i] === ']' && brackArr[2] > 0) {
+            brackArr[2] = (brackArr[2] - 1)
         }
     }
-    return brackArr[0] === '' && brackArr[1] === '' && brackArr[2] === '' ? true : false
+    return brackArr[0] === 0 && brackArr[1] === 0 && brackArr[2] === 0 ? true : false
 }
 module.exports = balancedParens;
