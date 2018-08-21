@@ -24,8 +24,22 @@
  *
  */
 
-function balancedParens(input){
+function areSameSymbol(a, b) {
+  if (a === '(' && b === ')' || a === '{' && b === '}' || a === '[' && b === ']') return true;
+  return false;
+}
 
+function balancedParens(input){
+  // the input length is an odd number
+  if (input.length % 2 === 1 || input.length === 0) {
+    return false;
+  }
+
+  if (input[0] === ')') return false;
+
+  if (input.length === 2 && areSameSymbol(input[0], input[1])) return true;
+
+  if (input[0] === '(') return balancedParens(input.slice(1, input.length - 1));
 }
 
 module.exports = balancedParens;
