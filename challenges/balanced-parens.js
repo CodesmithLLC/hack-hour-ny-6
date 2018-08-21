@@ -25,7 +25,17 @@
  */
 
 function balancedParens(input){
+	let firstOpen = input.indexOf("(")
+	let lastOpen = input.lastIndexOf("(")
 
+	let firstClosed = input.indexOf(")")
+	let lastClosed = input.lastIndexOf(")")
+
+	let totalOpen = input.substring(firstOpen, lastOpen+1).match(/\(|\[|\{/g)   
+	let totalClosed = input.substring(firstClosed, lastClosed+1).match(/\)|\]|\}/g)
+
+	if (input.match(/\(|\)/g).length %2 !== 0 || lastOpen > firstClosed) return false
+	if (totalOpen.length === totalClosed.length) return true
 }
 
 module.exports = balancedParens;
