@@ -14,11 +14,26 @@
  *      500   ->    D
  *      900   ->    CM
  *      1000  ->    M
- * 
+ *
  */
 
 function romanNumeral(n) {
-
+  let dict = {
+      M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90,
+      L: 50, Xl: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1,
+  },
+  roman = '',
+  prop;
+  for( prop in dict){
+    // console.log('this is in i: ', i);
+    while(dict[prop] <= n){
+      roman += prop;
+      n -= dict[prop];
+      // console.log('this is dict: ', dict[prop]);
+    }
+  }
+  // console.log(roman)
+  return roman;
 }
 
 module.exports = romanNumeral;

@@ -25,7 +25,19 @@
  */
 
 function balancedParens(input){
+  let matches = {'[':']','{':'}','(':')'}
+  let stack = [];
 
+  for(let i = 0; i < input.length; i++){
+    if(matches.hasOwnProperty(input[i])){
+      stack.push(input[i]);
+    } else if(input[i] === ']' || input[i] === '}' || input[i] === ')') {
+        if(matches[stack.pop() !== input[i]]){
+          return false;
+        }
+    }
+  }
+  return !stack.length;
 }
 
 module.exports = balancedParens;
