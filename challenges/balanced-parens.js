@@ -24,8 +24,39 @@
  *
  */
 
-function balancedParens(input){
+//['[',']','(',')','{','}']
 
+function balancedParens(input){
+  const stack = input.split('');
+  let closeChar = '';
+       
+  //input.length???
+  while (stack.length) {
+    const temp = stack[stack.length - 1]
+    if (temp === '}' || temp === ']' || temp === ')') {
+      closeChar = stack.pop();
+    }
+    console.log(stack, closeChar)
+    const char = stack.pop();
+    if (char === '{' && closeChar === '}') {
+      return stack.length ? balancedParens(stack.join('')) : true
+    }
+    if (char === '(' && closeChar === ')') {
+      return stack.length ? balancedParens(stack.join('')) : true
+    }
+    if (char === '[' && closeChar === ']') {
+      return stack.length ? balancedParens(stack.join('')) : true
+    }
+    if (char === ')' || char === '}' || char === ']') {
+      return stack.length ? balancedParens(stack.concat(char).join('')) : false;
+    }
+  }
+  return false
 }
+const test1 = '[](){}' //true
+const test2 = '[({})]' //true
+const test3 = '[(]{)}' //false
+const res = balancedParens(test2);
+console.log(res)
 
 module.exports = balancedParens;
