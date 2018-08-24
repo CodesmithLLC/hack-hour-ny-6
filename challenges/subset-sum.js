@@ -10,6 +10,11 @@
 
 function subsetSum(array, target) {
 
+  array = array.sort();
+
+  return array;
 }
+
+console.log(subsetSum([3, 7, 4, 2]));
 
 module.exports = subsetSum;
