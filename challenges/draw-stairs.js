@@ -13,9 +13,22 @@
 
 */
 
+String.prototype.repeat = function(length) {
+    return Array(length + 1).join(this);
+    
+   };
+
 function drawStairs(n) {
-
+    // define spaces var
+    spaces = n - 1;
+    // loop n times
+    for (let i = 1; i <= n; i++) {  
+        // print spaces spaces, n - spaces hashes
+        console.log("%s%s", " ".repeat(spaces), "#".repeat(n - spaces));
+        // decrement spaces
+        spaces--;
+    }
+return;
 }
-
 
 module.exports = drawStairs;

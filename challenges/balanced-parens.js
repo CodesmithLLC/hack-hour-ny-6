@@ -24,8 +24,52 @@
  *
  */
 
-function balancedParens(input){
+function balancedParens(input) {
+  const roundArr = [];
+  const squareArr = [];
+  const birdyArr = [];
 
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === "(") {
+      roundArr.push(input[i]);
+    }
+    if (input[i] === ")") {
+      while (!roundArr.pop()) {
+        return false;
+      }
+    }
+    if (input[i] === "[") {
+      squareArr.push("[");
+    }
+    if (input[i] === "]") {
+      while (!squareArr.pop()) {
+        return false;
+      }
+    }
+    if (input[i] === "{") {
+      birdyArr.push("{");
+    }
+    if (input[i] === "}") {
+      while (!birdyArr.pop()) {
+        return false;
+      }
+    }
+  }
+  while (
+    roundArr.length === 0 &&
+    squareArr.length === 0 &&
+    birdyArr.length === 0
+  ) {
+    return true;
+  }
+  return false;
 }
+
+console.log(balancedParens("[](){}")); // true
+console.log(balancedParens("[({})]")); // true
+console.log(balancedParens("[(]{)}")); // false
+console.log(balancedParens("()")); // true
+console.log(balancedParens(")(")); // false
+console.log(balancedParens("(())")); // true
 
 module.exports = balancedParens;

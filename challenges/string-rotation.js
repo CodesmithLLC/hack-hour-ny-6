@@ -17,6 +17,22 @@ function isSubstring(s1, s2) {
 
 function stringRotation(s1, s2) {
 
+  if (s1.length !== s2.length) {
+    return false;
+  }
+  // select string indecies in all orders from 0 to length
+  const newString = s1 + s1;
+  let string3 = '';
+
+  // select string[i] upto string.length
+  for (let i = 0; i < s1.length; i++) {
+    for (let j = 0; j < s1.length; j++) {
+      // make into a big string
+      string3 += newString[j + i];
+    }
+  }
+  // send to isSubstring, return 
+  return isSubstring(string3, s2);
 }
 
 module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
