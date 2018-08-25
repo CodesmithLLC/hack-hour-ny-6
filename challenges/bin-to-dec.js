@@ -13,10 +13,8 @@
  * Write a function that converts a decimal number to binary (then maybe hexadecimal)
  */
 
-function binToDec(binary, placeValue = 1, sum = 0) {
-  if (binary.length === 0) return sum
-  sum += binary.slice(-1) * placeValue
-  return binToDec(binary.slice(0, binary.length - 1), placeValue * 2, sum)
+function binToDec(bin, place = 1, sum = 0) {
+  return bin.length === 0 ? sum : binToDec(bin.slice(0, bin.length - 1), place * 2, sum += bin.slice(-1) * place)
 }
 
 module.exports = binToDec;
