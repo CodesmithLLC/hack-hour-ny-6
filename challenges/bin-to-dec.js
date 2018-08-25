@@ -14,11 +14,11 @@
  */
 
 function binToDec(binary) {
-  return (places = [...binary]
+  return [...binary]
     .map(str => +str)
     .reverse()
     .map((num, i) => (num === 1 ? Math.pow(2, i) : 0))
-    .reduce((sum, curr) => (sum += curr), 0))
+    .reduce((sum, curr) => (sum += curr), 0)
 }
 
 // console.log(binToDec("0"), "-> 0")
