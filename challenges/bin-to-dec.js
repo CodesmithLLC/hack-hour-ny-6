@@ -14,7 +14,13 @@
  */
 
 function binToDec(binary) {
-
+    let indexOfFirstOne = binary.split('').findIndex((n) => {return n === '1'})
+    let slice = binary.split('').slice(indexOfFirstOne)
+    return slice.reduce((acc, cur, i) => {
+        let exp = slice.length - 1 - i;
+        if (cur === "1") { acc = acc + Math.pow(2, exp)}
+        return acc 
+    }, 0)
 }
 
 module.exports = binToDec;
