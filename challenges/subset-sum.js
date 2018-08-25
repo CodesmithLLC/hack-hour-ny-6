@@ -10,20 +10,20 @@
 
 
 // THIS DOES ANY 2 NUMBERS IN AN ARRAY === TARGET
-// function subsetSum(array, target) {
-//     if(array.length === 1) {
-//         return false
-//     }
-//     for(let i = 1; i < array.length; i++) {
-//         if(array[0] + array[i] === target) {
-//             return true
-//         } 
-//     }
+function subsetSum(array, target) {
+    if(array.length === 1) {
+        return false
+    }
+    for(let i = 1; i < array.length; i++) {
+        if(array[0] + array[i] === target) {
+            return true
+        } 
+    }
 
-//     newArr = array.splice(0,1)
-//     return subsetSum(array, target)
+    newArr = array.splice(0,1)
+    return subsetSum(array, target)
 
-// }
+}
 
 
 function subsetSum(array, target) {
