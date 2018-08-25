@@ -18,8 +18,5 @@ function binToDec(binary, placeValue = 1, sum = 0) {
   sum += binary.slice(-1) * placeValue
   return binToDec(binary.slice(0, binary.length - 1), placeValue * 2, sum)
 }
-const test = '0000101'
-const result = binToDec(test);
-console.log(result)
 
 module.exports = binToDec;
