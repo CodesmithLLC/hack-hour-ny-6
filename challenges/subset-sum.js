@@ -9,6 +9,10 @@
  */
 
 function subsetSum(array, target) {
+  let result = [];
+  let sortArr = aray.sort();
+
+
 
 }
 
