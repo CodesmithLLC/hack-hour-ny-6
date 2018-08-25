@@ -13,8 +13,13 @@
  * Write a function that converts a decimal number to binary (then maybe hexadecimal)
  */
 
-function binToDec(binary) {
-
+function binToDec(binary, placeValue = 1, sum = 0) {
+  if (binary.length === 0) return sum
+  sum += binary.slice(-1) * placeValue
+  return binToDec(binary.slice(0, binary.length - 1), placeValue * 2, sum)
 }
+const test = '0000101'
+const result = binToDec(test);
+console.log(result)
 
 module.exports = binToDec;
