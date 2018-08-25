@@ -9,7 +9,13 @@
  */
 
 function subsetSum(array, target) {
-
+    if (target === 0) return true;
+    if (!array.length) return false;
+    // left side of OR: continues search, including every number in the array
+    // right side of OR: starts a new subset with the current target
+    return subsetSum(array.slice(1), target - array[0]) || subsetSum(array.slice(1), target)
 }
+
+subsetSum([8, -2, 1, -3], 6) //-> true, 8 + 1 + (-3) = 6
 
 module.exports = subsetSum;
