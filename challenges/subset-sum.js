@@ -10,6 +10,19 @@
 
 function subsetSum(array, target) {
 
+    
+    array = array.sort((a, b) => { return b - a }) // sorted array, greatest to least 
+    if (array.includes(target)) return true;
+    if (target < array[array.length - 1]) return false; 
+
+    let array = [1, 2, 3, 4, 5]
+    let target = 3
+    // get el in array that is less than target 
+    let sliceInd = array.findIndex((el) => { el < target })
+    return sliceInd 
+    let subAry = array.slice()
+
+
 }
 
 module.exports = subsetSum;
