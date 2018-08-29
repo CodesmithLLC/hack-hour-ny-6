@@ -23,3 +23,4 @@ function drawStairs(n) {
 module.exports = drawStairs;
 
 // LOCAL DEBUGGER
+drawStairs(6);
