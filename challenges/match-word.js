@@ -11,10 +11,10 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-  let reg = /[^a-zA-Z]?([a-zA-Z]+)[^a-zA-z]+([a-zA-Z]+)/
+  let reg = /[a-zA-Z]+/g
   // let first = /([a-zA-Z]+)/;
   // let last = /([a-zA-Z]+$)/;
-  let words = reg.exec(str);
+  let words = str.match(reg);
   console.log(words)
   // let lastWord = last.exec(str);
   // console.log(firstWord)
