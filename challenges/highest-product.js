@@ -3,7 +3,7 @@
  */
 
 function highestProduct(array) {
-
+  return array.sort((a,b) => a > b).slice(-3).reduce( prev, next => prev * next);
 }
 
 

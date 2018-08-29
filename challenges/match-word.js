@@ -10,8 +10,16 @@
 // matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw');  -> true
 // matchWord('');  -> true
 
-function matchWord(str) {
+function matchWord(str, stack =[]) {
+  let obj = {
+    "end": "dne",
+    "if": "fi",
+    "for": "rof",
+    "while": "elihw"
+  }
 
 }
+
+console.log(matchWord('for__if__rof__fi'));
 
 module.exports = matchWord;
