@@ -11,7 +11,18 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+	let keywords = str.match(/[a-zA-Z]+/g) || [];
+	let stack = [];
+	for(let i =0; i < keywords.length; i++){
+		let word = keywords[i];
+		let reversed = word.split('').reverse().join('').toLowerCase();
+		if(reversed === stack[stack.length - 1]){
+			stack.pop();
+		} else {
+			stack.push(word.toLowerCase());
+		}
+	}
+	return !stack.length;
 }
 
 module.exports = matchWord;
