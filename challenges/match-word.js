@@ -11,7 +11,26 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+  let reg = /[^a-zA-Z]?([a-zA-Z]+)[^a-zA-z]+([a-zA-Z]+)/
+  // let first = /([a-zA-Z]+)/;
+  // let last = /([a-zA-Z]+$)/;
+  let words = reg.exec(str);
+  console.log(words)
+  // let lastWord = last.exec(str);
+  // console.log(firstWord)
+  // console.log(lastWord)
+  // console.log(str)
+  // if(lastWord[0].split('').reverse().join('').toLocaleLowerCase() === firstWord[0].toLowerCase()) {
+  //   return true
+  // }
+  // return false
 }
 
-module.exports = matchWord;
+// module.exports = matchWord;
+
+// console.log(matchWord('__END_DNE-----'));
+// console.log(matchWord('__ENDDNE__'));
+// console.log(matchWord('IF()()fi[]'));
+console.log(matchWord('for__if__rof__fi'));
+console.log(matchWord('%%$@$while  try ! yrt  for if_fi rof #*#  elihw'));
+// console.log(matchWord(''));
