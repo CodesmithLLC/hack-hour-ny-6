@@ -3,8 +3,12 @@
  */
 
 function highestProduct(array) {
-
-}
+    return array.sort((a, b) => {
+      return b - a;
+    }).slice(0, 3).reduce((acc, num) => {
+      return acc * num;
+    })
+  }
 
 
 module.exports = highestProduct;
