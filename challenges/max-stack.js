@@ -13,14 +13,12 @@ function Stack() {
   };
   this.length = 0;
   this.max = null;
-  this.createNode = (value, max) => {
-    return {
-      value: null || value,
-      prevMax: null || max,
-      prev: null,
-      next: null
-    }
-  };
+  this.createNode = (value, max) => ({
+    value: null || value,
+    prevMax: null || max,
+    prev: null,
+    next: null,
+  });
   this.push = (value) => {
     const node = this.createNode(value, this.max);
     if (!this.length) {
@@ -38,22 +36,31 @@ function Stack() {
     }
     this.length += 1;
     return this.length;
-  }
+  };
   this.pop = () => {
+    const { value, prevMax } = this.storage.tail;
     if (!this.length) return undefined;
-    const { value } = this.storage.tail
-    this.storage.tail = this.storage.tail.prev;
-    this.storage.tail.next = null;
-    if (this.storage.tail.value > this.storage.tail.prevMax) {
+    if (this.length === 1) {
+      this.storage.head = null;
+      this.storage.tail = null;
+      this.storage.max = null;
+    } else {
+      this.storage.tail = this.storage.tail.prev;
+      this.storage.tail.next = null;
+    }
+    if (value > prevMax) {
       this.max = this.storage.tail.value;
     } else {
       this.max = this.storage.tail.prevMax;
     }
     this.length -= 1;
+    return value;
   };
-  this.getMax = () => {
-    return this.max;
-  }
+  this.getMax = () => this.max;
 }
+const stack = new Stack();
+stack.push(1);
+stack.push(2);
+console.log(stack.pop());
 
 module.exports = Stack;
