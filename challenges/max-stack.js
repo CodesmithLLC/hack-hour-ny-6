@@ -33,13 +33,13 @@ Stack.prototype.getMax = function() {
   return this.highest
 }
 
-let stack = new Stack()
-stack.push(0)
-stack.push(1)
-stack.push(20)
-stack.push(3)
-console.log({ push: stack.push(4), stack })
-console.log({ pop: stack.pop(), stack })
-console.log({ getMax: stack.getMax() })
+// let stack = new Stack()
+// stack.push(0)
+// stack.push(1)
+// stack.push(20)
+// stack.push(3)
+// console.log({ push: stack.push(4), stack })
+// console.log({ pop: stack.pop(), stack })
+// console.log({ getMax: stack.getMax() })
 
 module.exports = Stack
