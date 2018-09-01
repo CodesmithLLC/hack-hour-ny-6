@@ -13,11 +13,13 @@ function Node(val) {
 function zip(l1, l2) {
 
 
+  // REWROTE THE FOUND FUNCTION TO GO TO EVERY OTHER
   let mergedLinkedListHead = { val : -1, next : null }; // create dummy node to get started
   let runner = mergedLinkedListHead;
+  let count = 0;
 
   while(l1 && l2) {
-      if(l1.val > l2.val) {
+      if(count % 2 === 0) {
           runner.next = l2;
           l2 = l2.next;
       } else {
@@ -25,11 +27,31 @@ function zip(l1, l2) {
           l1 = l1.next;
       }
       runner = runner.next;
+      count++
   }
 
   runner.next = l1 || l2;
 
   return mergedLinkedListHead.next;
+
+  // FOUND THIS ANSWER ONLINE
+  // let mergedLinkedListHead = { val : -1, next : null }; // create dummy node to get started
+  // let runner = mergedLinkedListHead;
+
+  // while(l1 && l2) {
+  //     if(l1.val > l2.val) {
+  //         runner.next = l2;
+  //         l2 = l2.next;
+  //     } else {
+  //         runner.next = l1;
+  //         l1 = l1.next;
+  //     }
+  //     runner = runner.next;
+  // }
+
+  // runner.next = l1 || l2;
+
+  // return mergedLinkedListHead.next;
 
 
 
@@ -120,10 +142,12 @@ function zip(l1, l2) {
 //   console.log(l3)
 //   count++
 }
+
+
 // let a = {
 //   val: 4,
 //   next: {
-//     val: 58,
+//     val: 5,
 //     next: {
 //       val: 6,
 //       next: null
@@ -132,7 +156,7 @@ function zip(l1, l2) {
 // };
 
 // let b = {
-//   val: 12,
+//   val: 1,
 //   next: {
 //     val: 2,
 //     next: {
@@ -141,4 +165,5 @@ function zip(l1, l2) {
 //     }
 //   }
 // }
+// zip(a,b)
 module.exports = {Node: Node, zip: zip};
