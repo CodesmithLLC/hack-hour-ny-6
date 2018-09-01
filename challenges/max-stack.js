@@ -58,9 +58,5 @@ function Stack() {
   };
   this.getMax = () => this.max;
 }
-const stack = new Stack();
-stack.push(1);
-stack.push(2);
-console.log(stack.pop());
 
 module.exports = Stack;
