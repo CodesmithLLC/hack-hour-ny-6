@@ -11,6 +11,18 @@ function Node(val) {
 }
 
 function zip(l1, l2) {
+  // l1 is head of Llist 1
+  
+  tmp = l1.next;
+  l1.next = l2;
+  l2 = l2.next;
+  l1.next.next = tmp
+
+
+  // l2 is head of Llist 2
+
+
+
 };
 
 module.exports = {Node: Node, zip: zip};
