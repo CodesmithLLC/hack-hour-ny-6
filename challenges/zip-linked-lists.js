@@ -1,57 +1,57 @@
 /* Merge two linked lists so that their nodes alternate. Let the first node of the zipped list be
- * the first node of the first argument, if it exists.
- * Implement the linked list using only a Node class. No need for a wrapper LinkedList class
- *
- * BONUS: Do this in place
- */
+* the first node of the first argument, if it exists.
+* Implement the linked list using only a Node class. No need for a wrapper LinkedList class
+*
+* BONUS: Do this in place
+*/
 
 function Node(val) {
-  this.value = val;
-  this.next = null;
+this.value = val;
+this.next = null;
 }
 
 function zip(l1, l2) {
 
 
-  // REWROTE THE FOUND FUNCTION TO GO TO EVERY OTHER
-  let mergedLinkedListHead = { val : -1, next : null }; // create dummy node to get started
-  let runner = mergedLinkedListHead;
-  let count = 0;
+// REWROTE THE FOUND FUNCTION TO GO TO EVERY OTHER
+let mergedLinkedListHead = { val : -1, next : null }; // create dummy node to get started
+let runner = mergedLinkedListHead;
+let count = 0;
 
-  while(l1 && l2) {
-      if(count % 2 === 0) {
-          runner.next = l2;
-          l2 = l2.next;
-      } else {
-          runner.next = l1;
-          l1 = l1.next;
-      }
-      runner = runner.next;
-      count++
-  }
+while(l1 && l2) {
+if(count % 2 === 0) {
+    runner.next = l2;
+    l2 = l2.next;
+} else {
+    runner.next = l1;
+    l1 = l1.next;
+}
+runner = runner.next;
+count++
+}
 
-  runner.next = l1 || l2;
+runner.next = l1 || l2;
 
-  return mergedLinkedListHead.next;
+return mergedLinkedListHead.next;
 
-  // FOUND THIS ANSWER ONLINE
-  // let mergedLinkedListHead = { val : -1, next : null }; // create dummy node to get started
-  // let runner = mergedLinkedListHead;
+// FOUND THIS ANSWER ONLINE
+// let mergedLinkedListHead = { val : -1, next : null }; // create dummy node to get started
+// let runner = mergedLinkedListHead;
 
-  // while(l1 && l2) {
-  //     if(l1.val > l2.val) {
-  //         runner.next = l2;
-  //         l2 = l2.next;
-  //     } else {
-  //         runner.next = l1;
-  //         l1 = l1.next;
-  //     }
-  //     runner = runner.next;
-  // }
+// while(l1 && l2) {
+//     if(l1.val > l2.val) {
+//         runner.next = l2;
+//         l2 = l2.next;
+//     } else {
+//         runner.next = l1;
+//         l1 = l1.next;
+//     }
+//     runner = runner.next;
+// }
 
-  // runner.next = l1 || l2;
+// runner.next = l1 || l2;
 
-  // return mergedLinkedListHead.next;
+// return mergedLinkedListHead.next;
 
 
 
