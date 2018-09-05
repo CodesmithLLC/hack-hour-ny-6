@@ -13,7 +13,13 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  if (Array.isArray(stock_prices_yesterday)) return 0;
+  // find the time where the stock is low
+  let low = stock_prices_yesterday.indexOf(Math.min(...stock_prices_yesterday));
+  // find the time where the stock is high
+  let high = stock_prices_yesterday.lastIndexOf(Math.max(...stock_prices_yesterday));
 
+  return high - low;
 }
 
 module.exports = bestProfit;
