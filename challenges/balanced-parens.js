@@ -29,7 +29,7 @@ function areSameSymbol(a, b) {
   return false;
 }
 
-function balancedParens(input){
+function balancedParens(input) {
   // the input length is an odd number
   if (input.length % 2 === 1 || input.length === 0) {
     return false;
