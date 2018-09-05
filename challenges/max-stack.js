@@ -24,8 +24,12 @@ Stack.prototype.push = (value) => {
 }
 
 Stack.prototype.pop = () => {
+  if( this.length === 0) return;
+
   let result = this.storage[this.length - 1];
+
   delete this.storage[this.length - 1 ];
+  
   if( result  === this.max[this.length - 1]) {
     this.max.pop();
   }
