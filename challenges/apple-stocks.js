@@ -14,6 +14,15 @@
 
 function bestProfit(stock_prices_yesterday) {
 
+  return stock_prices_yesterday.reduce((acc, cur, i) => {
+    let sliced = stock_prices_yesterday.slice(i + 1)
+    
+    sliced.forEach(el => {
+      if ((el - cur) > acc) acc = el - cur // set new profit high 
+    })
+
+    return acc
+  }, 0)
 }
 
 module.exports = bestProfit;
