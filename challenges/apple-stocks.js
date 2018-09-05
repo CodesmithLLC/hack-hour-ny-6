@@ -13,6 +13,29 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  // initialize high and low arrays
+  const high = [];
+  const low = [];
+
+  // populate highLow by adding min again while it is less than current value
+  let i = 0;
+  while (stock_prices_yesterday[i]) {
+    if (stock_prices_yesterday[i] > high[high.length - 1]) {
+      high.push(stock_prices_yesterday[i]);
+    } else {
+      high.push(high[high.length - 1]);
+    }
+
+    if (stock_prices_yesterday[i] < low[low.length - 1]) {
+      low = stock_prices_yesterday[i];
+    } else {
+      low.push(low[low.length - 1]);
+    }
+    i++;
+  }
+
+  // compare high and low indecies to determine whether they're before each other
+
 
 }
 
