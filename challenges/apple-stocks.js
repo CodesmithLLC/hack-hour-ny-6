@@ -11,20 +11,14 @@
  *
  *  Return 0 if no profit is possible OR if input is invalid.`
  */
-//   0    1    2    3    4    5
-// [10,  20, 100,  50,  30, 200] -> 190
-//   0    1    2    3    4    5
-// [10,   0,   0,  10,   0,  10] -> 0
 
-// find the min value
-// find the max value AFTER min position
 function bestProfit(stockPrices) {
   if (!stockPrices.length || !Array.isArray(stockPrices)) return 0;
   let lowestPrice = Infinity;
   let highestPrice = -Infinity;
   let pos = 0;
   let i = 0;
-  while(i < stockPrices.length) {
+  while (i < stockPrices.length) {
     let stockPrice = stockPrices[i];
     if (stockPrice <= lowestPrice) {
       lowestPrice = stockPrice;
