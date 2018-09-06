@@ -31,4 +31,18 @@ function bestProfit(stock_prices_yesterday) {
   }
   return bestBuy;
 }
+
+// function bestProfit(curHigh = 0, low = stock_prices_yesterday[0], high = stock_prices_yesterday[0], stock_prices_yesterday) {
+//   console.log(stock_prices_yesterday)
+//   console.log('high',curHigh)
+//   console.log('h ',high)
+//   console.log('l ',low)
+//   stock_prices_yesterday.length === 0 ? curHigh : high > stock_prices_yesterday[0] ? bestProfit(curHigh, low, high = stock_prices_yesterday[0], stock_prices_yesterday.slice(1)) : bestProfit(curHigh=high-low, low = stock_prices_yesterday[0], high = -Infinity, stock_prices_yesterday.slice(1))
+// }
+
+// let arr = [];
+// for(let i = 0; i < 10; i++) {
+//   arr.push(Math.round(Math.random() * 1000))
+// }
 module.exports = bestProfit;
+// console.log(bestProfit(arr))
