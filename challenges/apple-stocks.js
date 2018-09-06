@@ -13,6 +13,7 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+<<<<<<< HEAD
   // initialize high and low arrays
   const high = [];
   const low = [];
@@ -36,6 +37,8 @@ function bestProfit(stock_prices_yesterday) {
 
   // compare high and low indecies to determine whether they're before each other
 
+=======
+>>>>>>> d2afe028ebc5bad5a3fb49863c5b47b7c011089c
 
 }
 
