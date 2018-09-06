@@ -13,14 +13,6 @@
  */
 // slope = (y2 - y1) / (x2 - x1)
 
-// function bestProfit2(prices) {
-//   const stack = []
-//   const highest = []
-//   const lowest = []
-
-//   prices.forEach(price => {})
-// }
-
 // Brute Force
 function bestProfit(prices) {
   if (!Array.isArray(prices) || prices.length === 0) {
@@ -30,10 +22,12 @@ function bestProfit(prices) {
   const maxProfit = []
 
   for (let i = 0; i < prices.length - 1; i++) {
-    for (let j = 0; j < prices.length; j++) {
+    for (let j = i + 1; j < prices.length; j++) {
       if (i !== j) {
         const difference = prices[j] - prices[i]
-        maxProfit.push(difference)
+        if (difference > 0) {
+          maxProfit.push(difference)
+        }
       }
     }
   }
@@ -43,6 +37,6 @@ function bestProfit(prices) {
 
 // const prices = [500, 400, 500, 500, 500, 500, 500, 500, 600, 500, 500, 500]
 
-// console.log(bestProfit2(prices), 'should be 200')
+// console.log(bestProfit(prices), 'should be 200')
 
 module.exports = bestProfit
