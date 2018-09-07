@@ -14,18 +14,27 @@
  */
 
 function mergeArrays(arr1, arr2) {
-    let result = [];
-    while( arr1.length > 0 || arr2.length > 0) {
-        if(arr1[0] < arr2[0] || arr2.length === 0) {
-            result.push(arr1[0])
-            arr1 = arr1.slice(1);
-        } 
-        if(arr2[0] < arr1[0] || arr1.length === 0) {
-          result.push(arr2[0])
-          arr2 = arr2.slice(1);
-        }
-    }
-    return result;
-}
+    debugger;
+      let result = [];
+      // while arr1 or arr2 has length 
+    
+      while( arr1.length !== 0 && arr2.length !== 0) {
+          // check if first element of array is least
+          // if least add to result array and slice array
+          if(arr1[0] < arr2[0] || arr2.length === 0) {
+              result.push(arr1[0])
+              arr1 = arr1.slice(1);
+          } 
+          if(arr2[0] < arr1[0] || arr1.length === 0) {
+            result.push(arr2[0])
+            arr2 = arr2.slice(1);
+          }
+      }
+      // when length of an array is 0, concat rest of array
+      // to result array and return result
+      // return result
+      return arr1.length === 0 ? result.concat(arr2) : result.concat(arr1);
+      return result;
+  }
 
 module.exports = mergeArrays;
