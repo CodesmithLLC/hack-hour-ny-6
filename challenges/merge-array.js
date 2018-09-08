@@ -15,26 +15,41 @@
 
 function mergeArrays(arr1, arr2) {
   const sortedArr = [];
-
+  
   while (arr1.length !== 0 && arr2.length !== 0) {
   // get lowest value from arr1 and arr2 (shift)
-    const a1 = arr1.shift;
-    const a2 = arr2.shift;
-    const sorted = null;
-  // compare values
-    // if the same, get both values
+    const a1 = arr1.shift();
+    const a2 = arr2.shift();
+    // if a1 is larger
     if(a1 > a2) {
     sortedArr.push(a2);
-    arr1.unshift(a1)
-    } else sortedArr.push(a1)
-    arr2.unshift(a2);
-    // unshift higher value back to its array
-
-  } else while (arr1.length !== 0 && arr2.length !== 0) {
-    // concat remaining arr to end of sortedArray
-      sortedArr += arr1 + arr2;
+    arr1.unshift(a1);
+    } else {
+      // values are the same, or a2 is larger
+      sortedArr.push(a1)
+      arr2.unshift(a2);
+    }
+  }if (arr1.length === 0) {
+    sortedArr.push(...arr2);
+  }else {
+    sortedArr.push(...arr1);
   }
   return sortedArr;
 }
+
+// function mergeSort(arr) {
+// if (arr.length === 1) return arr;
+
+// const midPoint = (arr.length / 2);
+// // cut in half
+
+// const firstPartition = mergeSort(arr.slice(0, midPoint));
+// const secondPartition = mergeSort(arr.slice(midPoint, arr.length));
+
+// // merge
+//  return mergeArrays(firstPartition, secondPartition);
+// }
+
+// console.log(mergeSort([15,21,23,25,26,2,5,29,3,3000]));
 
 module.exports = mergeArrays;
