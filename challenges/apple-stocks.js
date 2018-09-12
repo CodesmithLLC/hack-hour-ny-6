@@ -12,17 +12,47 @@
  *  Return 0 if no profit is possible OR if input is invalid.
  */
 
+
+[1000,998,997,999]
+
 function bestProfit(stock_prices_yesterday) {
   if(!stock_prices_yesterday.length || !Array.isArray(stock_prices_yesterday)) return 0;
 
-  let lowest = Infinity;
-  let highest = -Infinity;
-  let result = highest - lowest;
+  //Time to buy stock (at it's lowest)
+  let buyTime = -Infinity;
 
-  for( let i = 0; i < stock_prices_yesterday; i++ ){
-    if( stock_prices_yesterday[i] < lowest) lowest = stock_prices_yesterday[i];
-    if( stock_prices_yesterday[i] > highest) highest = stock_prices_yesterday[i];
+  //Time to sell stock (at it's highest)
+  let sellTime = -Infinity;
+
+  //Price of lowest stock 
+  let buyStock = Infinity;
+
+  //Price of highest stock 
+  let sellStock = -Infinity;
+
+  let result = sellStock - buyStock;
+
+  for( let currTime = 0; currTime < stock_prices_yesterday; currTime++ ){
+    //Price of current stock greater than price of previous high stock?
+    if(stock_prices_yesterday[currTime] > sellStock){
+      //Time of current stock in check past time of highest stock?
+      if(currTime > buyTime){
+        //Re-assign stock and time
+        sellStock = stock_prices_yesterday[currTime];
+        sellTime = currTime;
+      }
+    } 
+
+    //Price of current stock less than price of previous low stock?
+    if(stock_prices_yesterday[currTime] < buyStock) {
+      //Time of current stock in check past time of lowest stock?
+      if(currTime < sellTime){
+        //Re-assign stock and time
+        buyStock = stock_prices_yesterday[currTime];
+        buyTime = currTime;
+      }
   }
+}
 
   if(result > 0) return result;
   return 0;

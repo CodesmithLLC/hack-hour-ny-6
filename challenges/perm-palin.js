@@ -10,7 +10,7 @@
  */
 
 function permPalin(str) {
-	
+	let obj 
 }
 
 module.exports = permPalin;
