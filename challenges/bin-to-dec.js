@@ -13,6 +13,7 @@
  * Write a function that converts a decimal number to binary (then maybe hexadecimal)
  */
 
+ //iterative
 function binToDec(binary) {
   let binValue = 0;
   let position = binary.length - 1;
@@ -25,12 +26,19 @@ function binToDec(binary) {
   return num;
 }
 
+//recursion
+function binToDec(binary, result = 0, position = binary.length - 1, binVal = 0) {
+  if ( position < 0) {console.log(result);return result};
+  if( binary[position] === '1') result += Math.pow(2, binVal);
+  return binToDec(binary, result, --position, ++binVal)
+}
+
 // TEST
-binToDec('0101');
-binToDec('11');
-binToDec('100'); 
-binToDec('101');
-binToDec('0101');
-binToDec('01010100101');
+// binToDec(`0101`);
+// binToDec(`101`);
+// binToDec(`110101`)
+// binToDec(`11`);
+// binToDec(`100`); 
+// binToDec(`01010100101`);
 
 module.exports = binToDec;
