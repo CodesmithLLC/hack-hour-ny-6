@@ -3,6 +3,8 @@
  */
 
 function twoSum(arr, n) {
+  if (arr.length < 2) return false
+
   // {[n - value] : collisions}
   const hashmap = arr.reduce((acc, value) => {
     if (acc.hasOwnProperty(n - value)) {
