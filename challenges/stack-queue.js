@@ -33,27 +33,33 @@ function Queue() {
 }
 Queue.prototype.reverse = function(stack) {
   const newStack = new Stack()
-  for (let i = 0; i < stack.length; i++) {
-    newStack.storage[i] = stack.storage[i]
+  for (let i = stack.length - 1; i >= 0; i--) {
+    newStack.push(stack.storage[i])
   }
+
   return newStack
 }
-
 Queue.prototype.enqueue = function(value) {
   this.stackEnqueue.push(value)
   this.stackDequeue = this.reverse(this.stackEnqueue)
 }
 Queue.prototype.dequeue = function() {
+  if (this.stackDequeue.length === 0) {
+    return null
+  }
   const popped = this.stackDequeue.pop()
   this.stackEnqueue = this.reverse(this.stackDequeue)
   return popped
 }
 
 // const queue = new Queue()
-// queue.enqueue('a')
-// queue.enqueue('b')
-// queue.enqueue('c')
-// const dequeued = queue.dequeue()
-// console.log({ queue, dequeued })
+
+// queue.enqueue('aa')
+// queue.enqueue('bb')
+// queue.enqueue('cc')
+// queue.enqueue('dd')
+
+// console.log({ dequeued: queue.dequeue() })
+// console.log(queue)
 
 module.exports = { Stack: Stack, Queue: Queue }
