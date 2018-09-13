@@ -3,7 +3,18 @@
  */
 
 function twoSum(arr, n) {
+  let sum = [];
+  let hash = {};
 
+  for(let i = 0; i < arr.length; i++){
+    let diff = n - arr[i];
+
+    if(hash[diff.toString()] !== undefined){
+      return true;
+    }
+    hash[arr[i].toString()] = arr[i];
+  }
+  return false;
 }
 
 module.exports = twoSum;
