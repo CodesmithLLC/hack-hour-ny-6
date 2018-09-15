@@ -12,9 +12,29 @@ function BinaryTree(val) {
     this.right = null;
 }
 
+const treeArr = [];
+
 function validBST(tree) {
-    if (tree.left.value > tree.value || tree.right.value < tree.value) return false;
-    else return (validBST(tree.left) && validBST(tree.right));
+    if (tree.left) {
+        validBST(tree.left);
+    }
+
+    treeArr.push(tree.value);
+
+    if (tree.right) {
+        validBST(tree.right);
+    }
+    return treeArr;
 }
+
+const bt = new BinaryTree(7);
+bt.left = new BinaryTree(5);
+bt.right = new BinaryTree(9);
+bt.left.left = new BinaryTree(4);
+bt.left.right = new BinaryTree(6);
+bt.right.left = new BinaryTree(8);
+bt.right.right = new BinaryTree(10);
+
+console.log(validBST(bt));
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
