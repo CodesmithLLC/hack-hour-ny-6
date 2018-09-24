@@ -35,6 +35,13 @@ function gcd(a, b) {
   }
 }
 
+/*
+function gcd(a, b) {
+  if (b === 0) return a;
+  return gcd(b, a % b)
+}
+*/
+
 // console.log(gcd(10, 8), '-> 2')
 // console.log(gcd(10, 9), '-> 1')
 // console.log(gcd(100, 45), '-> 5')
