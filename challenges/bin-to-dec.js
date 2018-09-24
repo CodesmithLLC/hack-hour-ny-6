@@ -14,7 +14,28 @@
  */
 
 function binToDec(binary) {
+  const binaryArr = binary.split('');
+  //console.log(binaryArr);
+  let power = 0;
+  let baseBinary = 0;
+  //console.log(baseBinary);
+  let currLength = binaryArr.length - 1;
 
+  for (let i=0; i < binaryArr.length; i++){
+      if (binaryArr[i] === '1'){
+        baseBinary =  baseBinary + Math.pow(2, currLength)
+      }
+      currLength--
+  }
+  //console.log(baseBinary);
+  return baseBinary;
 }
+
+binToDec('0')
+binToDec('11')
+binToDec('100')
+binToDec('101')
+binToDec('0101')
+console.log(binToDec('1011'))
 
 module.exports = binToDec;

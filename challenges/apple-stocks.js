@@ -13,7 +13,29 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+  const  currPrice = { lowest: Infinity, lowIndex: null, highest: -Infinity, highIndex: null };
+  const  indeces = { lowest: Infinity, highest: -Infinity }
+  const bestPrices = [];
+  for (let i=0; i < stock_prices_yesterday.length; i++){
+    if (stock_prices_yesterday[i] < currPrice.lowest){
+      if (currPrice.lowest < currPrice.highest){
+        const priceToStore = { ...currPrice };
+        bestPrices.push(priceToStore);
+      }
+      currPrice.lowest = stock_prices_yesterday[i]
+      currPrice.highest = -Infinity
+      //currPrice.highest = 0;
+    } else {
+      if (stock_prices_yesterday[i] > currPrice.highest) {
+        currPrice.highest = stock_prices_yesterday[i];
+      }
+    }
+    console.log(currPrice);
+  }
+  bestPrices.push(currPrice)
+  console.log({bestPrices});
 }
+
+bestProfit([10, 5, 8, 6, 11, 3, 2, 8, 5, 12])
 
 module.exports = bestProfit;
