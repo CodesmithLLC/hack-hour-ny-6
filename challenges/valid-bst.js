@@ -35,6 +35,6 @@ bt.left.right = new BinaryTree(6);
 bt.right.left = new BinaryTree(8);
 bt.right.right = new BinaryTree(10);
 
-console.log(validBST(bt));
+console.log(validBST(bt, newArr = []));
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
