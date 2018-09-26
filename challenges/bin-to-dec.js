@@ -14,7 +14,20 @@
  */
 
 function binToDec(binary) {
+    binary = binary.split("").reverse()
+    let binaryKey = [1,2,4,8,16,32,64,128]
+    count = 0;
+    console.log(binary)
+    for(let i = 0; i < binary.length; i++) {
+        if(binary[i] === '1') {
+            count += binaryKey[i]
+        }
+    }
+    return count;
 
 }
 
 module.exports = binToDec;
+// console.log(binToDec('0'))
+// console.log(binToDec('0101'))
+// console.log(binToDec('01010101'))

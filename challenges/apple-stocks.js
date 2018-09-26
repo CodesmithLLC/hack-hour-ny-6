@@ -13,7 +13,36 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
-
+  if(!stock_prices_yesterday.length) return 0;
+  let high = stock_prices_yesterday[0];
+  let low = stock_prices_yesterday[0];
+  let bestBuy = -Infinity
+  for(let i=1;i<stock_prices_yesterday.length;i++) {
+    if(stock_prices_yesterday[i] > high) {
+      high = stock_prices_yesterday[i];
+    }
+    if(stock_prices_yesterday[i] < low) {
+      if((high - low) > bestBuy) {
+        bestBuy = (high-low);
+      }
+      low = stock_prices_yesterday[i];
+      high = -Infinity
+    }
+  }
+  return bestBuy;
 }
 
+// function bestProfit(curHigh = 0, low = stock_prices_yesterday[0], high = stock_prices_yesterday[0], stock_prices_yesterday) {
+//   console.log(stock_prices_yesterday)
+//   console.log('high',curHigh)
+//   console.log('h ',high)
+//   console.log('l ',low)
+//   stock_prices_yesterday.length === 0 ? curHigh : high > stock_prices_yesterday[0] ? bestProfit(curHigh, low, high = stock_prices_yesterday[0], stock_prices_yesterday.slice(1)) : bestProfit(curHigh=high-low, low = stock_prices_yesterday[0], high = -Infinity, stock_prices_yesterday.slice(1))
+// }
+
+// let arr = [];
+// for(let i = 0; i < 10; i++) {
+//   arr.push(Math.round(Math.random() * 1000))
+// }
 module.exports = bestProfit;
+// console.log(bestProfit(arr))
