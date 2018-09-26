@@ -28,4 +28,7 @@ function countTwos(num) {
   return toTwos;
 }
 
-module.exports = countTwos;
+
+console.log(countTwos(300))
+
+// module.exports = countTwos;
