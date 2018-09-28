@@ -9,9 +9,31 @@
  * Do not assume the ranges are in order
  */
 
-
-function mergeRanges(array) {
-
+function mergeRanges(arr) {
+  let final = [];
+  for (let i = 0; i < arr.length - 1; i++) {
+    // CURRENT array
+    current = arr[i];
+    // NEXT array
+    next = arr[i + 1];
+    // if CURRENT array is in the range of the NEXT array
+    // merge CURRENT and NEXT
+    if (current[0] >= Math.min(...next) || current[1] >= Math.min(...next)) {
+      // mininum in CURRENT range
+      let minRange = Math.min(...current, ...next);
+      // maximum in NEXT range
+      let maxRange = Math.max(...current, ...next);
+      // push minimum and maximum of MERGED array
+      final.push([minRange, maxRange]);
+      // increment i to skip NEXT array since merged
+      i++;
+    } else {
+      // if CURRENT array max is not in range of NEXT
+      // push CURRENT range to final
+      final.push([Math.min(...current), Math.max(...current)]);
+    }
+  }
+  return final;
 }
 
 module.exports = mergeRanges;
