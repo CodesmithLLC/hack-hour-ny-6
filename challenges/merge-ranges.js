@@ -10,7 +10,8 @@
  */
 
 function mergeRanges(arr) {
-  let final = [];
+  //
+  let merged = [];
   for (let i = 0; i < arr.length - 1; i++) {
     // CURRENT array
     current = arr[i];
@@ -24,16 +25,16 @@ function mergeRanges(arr) {
       // maximum in NEXT range
       let maxRange = Math.max(...current, ...next);
       // push minimum and maximum of MERGED array
-      final.push([minRange, maxRange]);
+      merged.push([minRange, maxRange]);
       // increment i to skip NEXT array since merged
       i++;
     } else {
       // if CURRENT array max is not in range of NEXT
-      // push CURRENT range to final
-      final.push([Math.min(...current), Math.max(...current)]);
+      // push CURRENT range to merged
+      merged.push([Math.min(...current), Math.max(...current)]);
     }
   }
-  return final;
+  return merged;
 }
 
 module.exports = mergeRanges;
