@@ -14,9 +14,9 @@ function mergeRanges(arr) {
   let merged = [];
   for (let i = 0; i < arr.length - 1; i++) {
     // CURRENT array
-    current = arr[i];
+    let current = arr[i];
     // NEXT array
-    next = arr[i + 1];
+    let next = arr[i + 1];
     // if CURRENT array is in the range of the NEXT array
     // merge CURRENT and NEXT
     if (current[0] >= Math.min(...next) || current[1] >= Math.min(...next)) {
