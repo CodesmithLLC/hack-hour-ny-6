@@ -27,7 +27,6 @@ function addLinkedList(l1, l2) {
     if( l2.value !== null ){
       l2num += l2.value;
     }
-
   }
 }
 
