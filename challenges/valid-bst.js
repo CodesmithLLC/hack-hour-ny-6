@@ -33,21 +33,13 @@ function validBST(tree) {
   return validBST(tree.left) && validBST(tree.right);
 }
 
-function validBST_2(treeValue, leftTree, rightTree) {
-  //Base Case
-  if(treeValue === null && rightTree === null && leftTree === null) return true;
-  if(treeValue < left) return false;
-  if(treeValue > right) return false;
+// function validBST_2(treeValue, leftTree, rightTree) {
+//   //Base Case
+//   if(treeValue === null && rightTree === null && leftTree === null) return true;
+//   if(treeValue < left) return false;
+//   if(treeValue > right) return false;
 
-  return validBST_2(leftTree, leftTree.left, leftTree.right) && validBST_2(rightTree, rightTree.left, rightTree.right)
-}
+//   return validBST_2(leftTree, leftTree.left, leftTree.right) && validBST_2(rightTree, rightTree.left, rightTree.right)
+// }
 
-// module.exports = {BinaryTree: BinaryTree, validBST: validBST};
-
-let test = new BinaryTree(5);
-test.left = new BinaryTree(4);
-test.left.left = new BinaryTree(3);
-test.right = new BinaryTree(6);
-
-console.log(validBST(test));
-validBST_2(tree.value, tree.left, tree.right);
+module.exports = {BinaryTree: BinaryTree, validBST: validBST};
