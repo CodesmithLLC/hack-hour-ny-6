@@ -18,18 +18,20 @@ function sumMultiples3Or5Below1000() {
 
   while (multipleX <= END || multipleY <= END) {
     multipleY = multiple * Y
-    if (multipleY <= END) {
+    if (multipleY <= END && multipleY % X !== 0) {
       if (!memo[multipleY]) {
         memo[multipleY] = multipleY
         sum += multipleY
+        arr.push(multipleY)
       }
     }
 
     multipleX = multiple * X
-    if (multipleX <= END) {
+    if (multipleX <= END && multipleX % Y !== 0) {
       if (!memo[multipleX]) {
         memo[multipleX] = multipleX
         sum += multipleX
+        arr.push(multipleX)
       }
     }
 
@@ -50,7 +52,7 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
 
   while (multipleX <= z || multipleY <= z) {
     multipleY = multiple * y
-    if (multipleY <= z) {
+    if (multipleY <= z && multipleY % x !== 0) {
       if (!memo[multipleY]) {
         memo[multipleY] = multipleY
         sum += multipleY
@@ -58,7 +60,7 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
     }
 
     multipleX = multiple * x
-    if (multipleX <= z) {
+    if (multipleX <= z && multipleX % y !== 0) {
       if (!memo[multipleX]) {
         memo[multipleX] = multipleX
         sum += multipleX
