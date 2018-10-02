@@ -42,7 +42,7 @@ function validBST_2(treeValue, leftTree, rightTree) {
   return validBST_2(leftTree, leftTree.left, leftTree.right) && validBST_2(rightTree, rightTree.left, rightTree.right)
 }
 
-module.exports = {BinaryTree: BinaryTree, validBST: validBST};
+// module.exports = {BinaryTree: BinaryTree, validBST: validBST};
 
 let test = new BinaryTree(5);
 test.left = new BinaryTree(4);
