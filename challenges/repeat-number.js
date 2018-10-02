@@ -11,7 +11,16 @@
  */
 
 function repeatNumbers(array) {
+  let lowest = {
+    value: infinity,
+    index: infinity
+  }
 
+  let repeat = false;
+
+  // array.forEach(value => {
+  //   value 
+  // })
 }
 
 module.exports = repeatNumbers;

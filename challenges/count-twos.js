@@ -9,8 +9,10 @@
 // countTwos(11420);  -> 4483
 
 
-function countTwos(num) {
-
+function countTwos(num, count = 0) {
+  if( num === 0 ) return count;
+  if( num.to)
+  return countTwos(num--)
 }
 
 module.exports = countTwos;
