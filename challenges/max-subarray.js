@@ -8,7 +8,33 @@
  */
 
 function maxSubarray(arr) {
+  const accums = []
+  for (let i = 0; i < arr.length; i++){
 
+    let accum = 0
+    for (let j = i; j < arr.length; j++){
+      if (accum === 0){
+        accum = arr[i];
+        // accums.push({ begin: i, end: j, val: accum })
+      } else {
+        accum += arr[j];
+        accums.push({ begin: i, end: j, val: accum })
+      }
+    }
+  }
+  console.log(accums);
+  let max = 0
+  let subArr = {};
+  for (let p=0; p < accums.length; p++){
+    if (accums[p].val > max){
+      max = accums[p].val;
+      subArr = accums[p];
+    }
+  }
+  console.log({max});
+  return arr.slice(subArr.begin, subArr.end + 1)
 }
 
+const arr = [1, -2, 3, 10, -4, 7, 2, -5];
+console.log(maxSubarray(arr))
 module.exports = maxSubarray;
