@@ -13,7 +13,19 @@
 
 
 function deleteDups(head) {
+  let currNode = head;
+  let prevNode = head;
+  let memo = {};
 
+  while( head !== null ){
+    if( memo[head.value] ){
+      prevNode.next = head.next;
+    } else {
+    memo[head.value] = "visited";
+    prevNode = JSON.parse(JSON.stringify(head));
+    }
+    head = head.next;
+  }
 }
 
 module.exports = deleteDups;
