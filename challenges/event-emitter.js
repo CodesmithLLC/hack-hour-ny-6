@@ -26,22 +26,30 @@ function EventEmitter() {
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  this.storage[funcName] = func;
+  if(this.storage[funcName]){
+    this.storage[funcName].push(func); return;
+  }
+  this.storage[funcName] = [func]; return;
 };
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-  return this.storage[funcName] ? this.storage[funcName](...args) : `Event "${funcName}" does not exist`;
+  if(this.storage[funcName]){
+    return this.storage[funcName].forEach( func => {
+      func(...args)
+    });
+  }
+  return `Event "${funcName}" does not exist`; 
 };
 
 
-// let instance = new EventEmitter();
-// let counter = 0;
-// instance.on('increment', function() {
-//   counter++;
-// }); // counter should be 0
+let instance = new EventEmitter();
+let counter = 0;
+instance.on('increment', function() {
+  counter++;
+}); // counter should be 0
 
-// instance.trigger('increment'); 
-// instance.trigger('increment');
-// console.log(instance.trigger('john'));
+instance.trigger('increment'); 
+instance.trigger('increment');
+console.log(instance.trigger('john'));
 
 module.exports = EventEmitter;
