@@ -16,16 +16,22 @@ function isSubstring(s1, s2) {
 }
 
 function stringRotation(s1, s2) {
-  let sArr = s1.split('');
-  for(let i = 0; i < s1.length; i++) {
+  let sArr = s1.split("");
+  for (let i = 0; i < s1.length; i++) {
     let lastEl = sArr.shift();
     sArr.push(lastEl);
-    let rotation = sArr.join('');
-    if(s2 === rotation) {
+    let rotation = sArr.join("");
+    if (s2 === rotation) {
       return true;
     }
   }
   return false;
 }
 
-module.exports = {isSubstring: isSubstring, stringRotation: stringRotation};
+function stringRotation(s1, s2) {
+  // Rotation must be same length and be a subset of the first
+  // string concatenated onto itself.
+  return s1.length === s2.length && isSubstring(s1.concat(s1), s2);
+}
+
+module.exports = { isSubstring: isSubstring, stringRotation: stringRotation };
