@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 /**
  * Make an EventEmitter that
  *
@@ -22,15 +22,15 @@
  */
 
 function EventEmitter() {
-
+  this.listeners = {}
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-
-};
+  this.listeners[funcName] = func
+}
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
+  this.listeners[funcName](...args)
+}
 
-};
-
-module.exports = EventEmitter;
+module.exports = EventEmitter

@@ -7,8 +7,9 @@
  *
  */
 
-function maxSubarray(arr) {
+function maxSubarray(arr) {}
 
-}
+console.log(maxSubarray([1, -2, 3, 10, -4, 7, 2, -5]), 'should be', 18)
+console.log(maxSubarray([15, 20, -5, 10]), 'should be', 40)
 
-module.exports = maxSubarray;
+module.exports = maxSubarray

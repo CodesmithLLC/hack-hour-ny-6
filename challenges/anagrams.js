@@ -7,13 +7,14 @@
  */
 
 /**
-  * example:
-  * var result = anagrams('abc');
-  * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
-  */
+ * example:
+ * var result = anagrams('abc');
+ * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
+ */
 
-function anagrams(string) {
+function anagrams(string, map = {}, result = []) {}
 
-}
+console.log(anagrams('abc'), ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
+console.log(anagrams('abcdef'))
 
-module.exports = anagrams;
+module.exports = anagrams
