@@ -16,22 +16,20 @@ function sumMultiples3Or5Below1000() {
   let multipleY = 0
   let memo = {}
 
-  while (multipleX <= END || multipleY <= END) {
+  while (multipleX < END || multipleY < END) {
     multipleY = multiple * Y
-    if (multipleY <= END && multipleY % X !== 0) {
+    if (multipleY < END) {
       if (!memo[multipleY]) {
         memo[multipleY] = multipleY
         sum += multipleY
-        arr.push(multipleY)
       }
     }
 
     multipleX = multiple * X
-    if (multipleX <= END && multipleX % Y !== 0) {
+    if (multipleX < END) {
       if (!memo[multipleX]) {
         memo[multipleX] = multipleX
         sum += multipleX
-        arr.push(multipleX)
       }
     }
 
@@ -40,6 +38,8 @@ function sumMultiples3Or5Below1000() {
 
   return sum
 }
+
+console.log(sumMultiples3Or5Below1000())
 
 // extension make it dynamic function that takes input x,y,z
 // and returns the sum of multiples of x and y below z
@@ -50,9 +50,9 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
   let multipleY = 0
   let memo = {}
 
-  while (multipleX <= z || multipleY <= z) {
+  while (multipleX < z || multipleY < z) {
     multipleY = multiple * y
-    if (multipleY <= z && multipleY % x !== 0) {
+    if (multipleY <= z) {
       if (!memo[multipleY]) {
         memo[multipleY] = multipleY
         sum += multipleY
@@ -60,7 +60,7 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
     }
 
     multipleX = multiple * x
-    if (multipleX <= z && multipleX % y !== 0) {
+    if (multipleX <= z) {
       if (!memo[multipleX]) {
         memo[multipleX] = multipleX
         sum += multipleX
