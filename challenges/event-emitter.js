@@ -26,11 +26,16 @@ function EventEmitter() {
 }
 
 EventEmitter.prototype.on = function(funcName, func) {
-  this.listeners[funcName] = func
+  this.listeners[funcName] = this.listeners[funcName]
+    ? [...this.listeners[funcName], func]
+    : [func]
 }
 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
-  this.listeners[funcName](...args)
+  this.listeners[funcName] &&
+    this.listeners[funcName].forEach(func => {
+      func(...args)
+    })
 }
 
 module.exports = EventEmitter
