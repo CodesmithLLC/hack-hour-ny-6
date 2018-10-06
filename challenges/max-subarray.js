@@ -31,7 +31,7 @@ function maxSubarray(arr) {
       subArr = accums[p];
     }
   }
-  console.log({max});
+  // console.log({max});
   return arr.slice(subArr.begin, subArr.end + 1)
 }
 
