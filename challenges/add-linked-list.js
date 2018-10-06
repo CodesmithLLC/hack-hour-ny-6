@@ -20,14 +20,33 @@ function Node(val) {
 function addLinkedList(l1, l2) {
   let l1num = '';
   let l2num = '';
-  while (l1.value !== null && l2.value !== null){
-    if( l1.value !== null){
-      l1num += l1.value;
-    }
-    if( l2.value !== null ){
-      l2num += l2.value;
-    }
+  let result = Number(l1num) + Number(l2num);
+
+  while (l1 !== null){
+    l1num += l1.value;
+    l1 = l1.next
   }
+  while(l2 !== null){
+    let result = Number(l1num) + Number(l2num);
+    l2num += l2.value;
+    l2 = l2.next
+  }
+
+  let list = new Node(result[0]);
+  result.spl
+
+  console.log(result);
 }
+
+let testL1 = new Node(5);
+testL1.next = new Node(5);
+testL1.next.next = new Node(5);
+ 
+let testL2 = new Node(2);
+testL2.next = new Node(2);
+testL2.next.next = new Node(2);
+
+addLinkedList(testL1, testL2)
+
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};
