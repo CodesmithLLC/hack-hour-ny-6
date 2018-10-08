@@ -21,12 +21,41 @@
  * - It is not necessary to write a way to remove listeners.
  */
 
-function EventEmitter() {
-  this.counter = 0;
-}
+let counter = 0;
 
-EventEmitter.prototype.on = function(funcName, func) {};
+function EventEmitter() {}
 
-EventEmitter.prototype.trigger = function(funcName, ...args) {};
+// store event as a property on the instance object, its value an array.
+EventEmitter.prototype.on = function(eventKeyword, func) {
+  // check and see if the event is already being used
+  if (!this[eventKeyword]) {
+    // if it is not, create the property and assign it an empty array
+    this[eventKeyword] = [];
+  }
+  // push the function to the keywords array.
+  this[eventKeyword].push(func);
+};
+
+EventEmitter.prototype.trigger = function(eventKeyword, ...args) {
+  // we store the additional arguments in an array
+  if (this[eventKeyword]) {
+    // look through function array on keyword property
+    for (var i = 0; i < this[eventKeyword].length; i++) {
+      // execute each funtion and pass arguments
+      this[eventKeyword][i](...args);
+    }
+  }
+};
+
+let instance = new EventEmitter();
+
+instance.on("increment", function() {
+  counter = counter + 1;
+});
+
+instance.trigger("increment", 5, 5, 5);
+instance.trigger("increment");
+
+console.log("the value of counter is", counter);
 
 module.exports = EventEmitter;
