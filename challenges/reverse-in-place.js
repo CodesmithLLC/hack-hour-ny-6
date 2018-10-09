@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /**
  * Write a function to reverse an array in place
  *
@@ -14,7 +14,25 @@
  */
 
 function reverseInPlace(array) {
-    return array.forEach((el, i, arr) => array[i] = arr[-i]);
+  return array.forEach((el, i, arr) => (array[i] = arr[-i]));
 }
 
+function repeatNumbers(array) {
+  var store = {};
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] in store) return array[i];
+    store[array[i]] = true;
+  }
+}
+
+// O(n) time, O(1) space
+function repeatNumbers(array) {
+  var result = 0;
+  // use bitwise XOR!!
+  for (var i = 0; i < array.length; i++) {
+    result = result ^ i ^ array[i];
+  }
+
+  return result;
+}
 module.exports = reverseInPlace;
