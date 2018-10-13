@@ -23,6 +23,30 @@
  *
  */
 
+// ---------------
+// Solution 2: O(n) Time, O(1) Space
+function circleCountry(xSet, ySet, rSet, start_x, start_y, end_x, end_y) {
+  const fromStartToEnd = Math.sqrt(
+    Math.pow(end_x - start_x, 2) + Math.pow(end_y - start_y, 2)
+  )
+
+  let count = 0
+  for (let i = 0; i < xSet.length; i++) {
+    count +=
+      Math.pow(start_x - xSet[i], 2) + Math.pow(start_y - ySet[i], 2) <
+        Math.pow(rSet[i], 2) && rSet[i] < fromStartToEnd
+        ? 1
+        : 0
+    count +=
+      Math.pow(end_x - xSet[i], 2) + Math.pow(end_y - ySet[i], 2) <
+        Math.pow(rSet[i], 2) && rSet[i] < fromStartToEnd
+        ? 1
+        : 0
+  }
+
+  return count
+}
+
 /**
  * Key observations:
  *   - Does not specify straight-lines
@@ -32,63 +56,51 @@
  *       we, therefore, only care about parent, nested circles
  *   - Likewise, we can ignore sibling nested circles
  */
-function circleCountry(
-  xCoords,
-  yCoords,
-  radii,
-  start_x,
-  start_y,
-  end_x,
-  end_y
-) {
-  /* Distance between points */
-  const distBetweenPoints = Math.sqrt(
-    Math.pow(end_x - start_x, 2) + Math.pow(end_y - start_y, 2)
-  )
 
-  /* start point */
-  const startDistancesSquared = xCoords.map((x, i) => {
-    const y = yCoords[i]
-    return Math.pow(start_x - x, 2) + Math.pow(start_y - y, 2)
-  })
-  const startNestedCircleDistances = startDistancesSquared.filter((dist, i) => {
-    const r = radii[i]
-    return dist < Math.pow(r, 2)
-  })
-  const startNestedRadii = radii.filter((r, i) => {
-    const dist = startDistancesSquared[i]
-    return dist < Math.pow(r, 2)
-  })
+// Solution 1: O(n) Time, O(n) Space
+// function circleCountry2(
+//   xCoords,
+//   yCoords,
+//   radii,
+//   start_x,
+//   start_y,
+//   end_x,
+//   end_y
+// ) {
+//   /* Distance between points */
+//   const distanceBetweenPoints = Math.sqrt(
+//     Math.pow(end_x - start_x, 2) + Math.pow(end_y - start_y, 2)
+//   )
 
-  /* end point */
-  const endDistancesSquared = xCoords.map((x, i) => {
-    const y = yCoords[i]
-    return Math.pow(end_x - x, 2) + Math.pow(end_y - y, 2)
-  })
-  const endNestedCircleDistances = endDistancesSquared.filter((dist, i) => {
-    const r = radii[i]
-    return dist < Math.pow(r, 2)
-  })
-  const endNestedRadii = radii.filter((r, i) => {
-    const dist = endDistancesSquared[i]
-    return dist < Math.pow(r, 2)
-  })
+//   /* Create arrays of distances */
+//   const startDistancesSquared = xCoords.map((x, i) => {
+//     const y = yCoords[i]
+//     return Math.pow(start_x - x, 2) + Math.pow(start_y - y, 2)
+//   })
+//   const endDistancesSquared = xCoords.map((x, i) => {
+//     const y = yCoords[i]
+//     return Math.pow(end_x - x, 2) + Math.pow(end_y - y, 2)
+//   })
 
-  const bordersFromStart = startNestedRadii.filter(r => r < distBetweenPoints)
-  const bordersFromEnd = endNestedRadii.filter(r => r < distBetweenPoints)
+//   /* Create arrays of radii, filtered by whether distance to border */
+//   const startNestedRadii = radii.filter((r, i) => {
+//     const dist = startDistancesSquared[i]
+//     return dist < Math.pow(r, 2)
+//   })
+//   const endNestedRadii = radii.filter((r, i) => {
+//     const dist = endDistancesSquared[i]
+//     return dist < Math.pow(r, 2)
+//   })
 
-  return bordersFromStart.length + bordersFromEnd.length
+//   /* Filter radii arrays again, but by distance between start and end  */
+//   const bordersFromStart = startNestedRadii.filter(
+//     r => r < distanceBetweenPoints
+//   )
+//   const bordersFromEnd = endNestedRadii.filter(r => r < distanceBetweenPoints)
 
-  // return {
-  //   startDistancesSquared,
-  //   endDistancesSquared,
-  //   startNestedRadii,
-  //   endNestedRadii,
-  //   startNestedCircleDistances,
-  //   endNestedCircleDistances,
-  //   betweenPoints
-  // }
-}
+//   /* Return count of remaining elements */
+//   return bordersFromStart.length + bordersFromEnd.length
+// }
 
 // const x = [0, 0, 0, 0, 0, -7, 4, 4, 4, 6, 2, 0]
 // const y = [0, 0, 0, 0, 3, -7, 0, 0, 0, 0, -2, 0]
@@ -96,10 +108,8 @@ function circleCountry(
 // const start_x = 0
 // const start_y = 0
 
-// // const end_x = 4
-// // const end_y = 0
 // const end_x = 0
-// const end_y = -0.95
+// const end_y = -0.9
 
 // console.log(circleCountry(x, y, r, start_x, start_y, end_x, end_y))
 
