@@ -24,93 +24,41 @@
  */
 
 // ---------------
-// Solution 2: O(n) Time, O(1) Space
-function circleCountry(xSet, ySet, rSet, start_x, start_y, end_x, end_y) {
-  const fromStartToEnd = Math.sqrt(
-    Math.pow(end_x - start_x, 2) + Math.pow(end_y - start_y, 2)
-  )
-
+// Solution: O(n) Time, O(1) Space
+// Calculate the distance from the starting point to the ending point
+// (EndX - StartX)^2 + (EndY - StartY)^2 < r^2
+// For each circle...
+// If the radius is less than the distance between the start and end points...
+// The distance from START to circle border is less than the radius squared
+// (StartX - CenterX)^2 + (StartY - CenterY)^2 < r^2
+// The distance from END to circle border is less than the radius squared
+// (EndX - CenterX)^2 + (EndY - CenterY)^2 < r^2
+function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
+  const distanceBetweenPoints = Math.hypot(start_x - end_x, start_y - end_y)
   let count = 0
-  for (let i = 0; i < xSet.length; i++) {
-    count +=
-      Math.pow(start_x - xSet[i], 2) + Math.pow(start_y - ySet[i], 2) <
-        Math.pow(rSet[i], 2) && rSet[i] < fromStartToEnd
-        ? 1
-        : 0
-    count +=
-      Math.pow(end_x - xSet[i], 2) + Math.pow(end_y - ySet[i], 2) <
-        Math.pow(rSet[i], 2) && rSet[i] < fromStartToEnd
-        ? 1
-        : 0
+
+  // Loop through each circle
+  for (let i = 0; i < x.length; i++) {
+    if (r[i] < distanceBetweenPoints) {
+      count +=
+        Math.hypot(x[i] - start_x, y[i] - start_y) < Math.pow(r[i], 2) ? 1 : 0
+      count +=
+        Math.hypot(x[i] - end_x, y[i] - end_y) < Math.pow(r[i], 2) ? 1 : 0
+    }
   }
 
   return count
 }
 
-/**
- * Key observations:
- *   - Does not specify straight-lines
- *   - Does not care about distance or length traveled, only borders
- *   - Thefore, unless there are infinite number of circles (which
- *       would be outside the bounds of discrete calculation),
- *       we, therefore, only care about parent, nested circles
- *   - Likewise, we can ignore sibling nested circles
- */
+const x = [0, 0, 0, 0, 0, -7, 4, 4, 4, 6, 2, 0]
+const y = [0, 0, 0, 0, 3, -7, 0, 0, 0, 0, -2, 0]
+const r = [0.3, 0.5, 0.7, 1, 1, 3, 0.3, 0.7, 1, 0.2, 0.2, 1.2]
+const start_x = 0
+const start_y = 0
 
-// Solution 1: O(n) Time, O(n) Space
-// function circleCountry2(
-//   xCoords,
-//   yCoords,
-//   radii,
-//   start_x,
-//   start_y,
-//   end_x,
-//   end_y
-// ) {
-//   /* Distance between points */
-//   const distanceBetweenPoints = Math.sqrt(
-//     Math.pow(end_x - start_x, 2) + Math.pow(end_y - start_y, 2)
-//   )
+const end_x = 4
+const end_y = 0
 
-//   /* Create arrays of distances */
-//   const startDistancesSquared = xCoords.map((x, i) => {
-//     const y = yCoords[i]
-//     return Math.pow(start_x - x, 2) + Math.pow(start_y - y, 2)
-//   })
-//   const endDistancesSquared = xCoords.map((x, i) => {
-//     const y = yCoords[i]
-//     return Math.pow(end_x - x, 2) + Math.pow(end_y - y, 2)
-//   })
-
-//   /* Create arrays of radii, filtered by whether distance to border */
-//   const startNestedRadii = radii.filter((r, i) => {
-//     const dist = startDistancesSquared[i]
-//     return dist < Math.pow(r, 2)
-//   })
-//   const endNestedRadii = radii.filter((r, i) => {
-//     const dist = endDistancesSquared[i]
-//     return dist < Math.pow(r, 2)
-//   })
-
-//   /* Filter radii arrays again, but by distance between start and end  */
-//   const bordersFromStart = startNestedRadii.filter(
-//     r => r < distanceBetweenPoints
-//   )
-//   const bordersFromEnd = endNestedRadii.filter(r => r < distanceBetweenPoints)
-
-//   /* Return count of remaining elements */
-//   return bordersFromStart.length + bordersFromEnd.length
-// }
-
-// const x = [0, 0, 0, 0, 0, -7, 4, 4, 4, 6, 2, 0]
-// const y = [0, 0, 0, 0, 3, -7, 0, 0, 0, 0, -2, 0]
-// const r = [0.3, 0.5, 0.7, 1, 1, 3, 0.3, 0.7, 1, 0.2, 0.2, 1.2]
-// const start_x = 0
-// const start_y = 0
-
-// const end_x = 0
-// const end_y = -0.9
-
-// console.log(circleCountry(x, y, r, start_x, start_y, end_x, end_y))
+console.log(circleCountry(x, y, r, start_x, start_y, end_x, end_y))
 
 module.exports = circleCountry
