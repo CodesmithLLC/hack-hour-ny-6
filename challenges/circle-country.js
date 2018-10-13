@@ -42,7 +42,7 @@ function circleCountry(
   end_y
 ) {
   /* Distance between points */
-  const betweenPoints = Math.sqrt(
+  const distBetweenPoints = Math.sqrt(
     Math.pow(end_x - start_x, 2) + Math.pow(end_y - start_y, 2)
   )
 
@@ -55,6 +55,10 @@ function circleCountry(
     const r = radii[i]
     return dist < Math.pow(r, 2)
   })
+  const startNestedRadii = radii.filter((r, i) => {
+    const dist = startDistancesSquared[i]
+    return dist < Math.pow(r, 2)
+  })
 
   /* end point */
   const endDistancesSquared = xCoords.map((x, i) => {
@@ -65,29 +69,38 @@ function circleCountry(
     const r = radii[i]
     return dist < Math.pow(r, 2)
   })
+  const endNestedRadii = radii.filter((r, i) => {
+    const dist = endDistancesSquared[i]
+    return dist < Math.pow(r, 2)
+  })
+
+  const bordersFromStart = startNestedRadii.filter(r => r < distBetweenPoints)
+  const bordersFromEnd = endNestedRadii.filter(r => r < distBetweenPoints)
+
+  return bordersFromStart.length + bordersFromEnd.length
 
   // return {
   //   startDistancesSquared,
   //   endDistancesSquared,
+  //   startNestedRadii,
+  //   endNestedRadii,
   //   startNestedCircleDistances,
   //   endNestedCircleDistances,
   //   betweenPoints
   // }
-
-  return startNestedCircleDistances.length + endNestedCircleDistances.length
 }
 
-const x = [0, 0, 0, 0, 0, -7, 4, 4, 4, 6, 2, 0]
-const y = [0, 0, 0, 0, 3, -7, 0, 0, 0, 0, -2, 0]
-const r = [0.3, 0.5, 0.7, 1, 1, 3, 0.3, 0.7, 1, 0.2, 0.2, 1.2]
-const start_x = 0
-const start_y = 0
+// const x = [0, 0, 0, 0, 0, -7, 4, 4, 4, 6, 2, 0]
+// const y = [0, 0, 0, 0, 3, -7, 0, 0, 0, 0, -2, 0]
+// const r = [0.3, 0.5, 0.7, 1, 1, 3, 0.3, 0.7, 1, 0.2, 0.2, 1.2]
+// const start_x = 0
+// const start_y = 0
 
-const end_x = 4
-const end_y = 0
+// // const end_x = 4
+// // const end_y = 0
 // const end_x = 0
-// const end_y = -0.8
+// const end_y = -0.95
 
-console.log(circleCountry(x, y, r, start_x, start_y, end_x, end_y))
+// console.log(circleCountry(x, y, r, start_x, start_y, end_x, end_y))
 
 module.exports = circleCountry
