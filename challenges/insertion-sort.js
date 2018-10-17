@@ -5,9 +5,9 @@
 
 
 function insertionSort(array, indx=1) {
- if( indx === array.length){
-   return array;
- }
+ if(array.length === 0) return array
+
+ if( indx === array.length) return array;
 
  if( array[indx] < array[indx - 1] ){
   let lower = array[indx] ;
