@@ -25,7 +25,7 @@ const bubbleSort = (array, i = 0) =>
     ? array
     : bubbleSort(
         array.reduce(
-          (result, e, j, arr) =>
+          (a, e, j, arr) =>
             i !== j && arr[j] > arr[j + 1]
               ? ([arr[j + 1], arr[j]] = [arr[j], arr[j + 1]])
               : arr,

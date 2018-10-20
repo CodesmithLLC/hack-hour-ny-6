@@ -11,7 +11,12 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  const { 0: x, 1: y } = str.match(/\d+/g)
+  let moves = 8
 
+  return moves
 }
 
-module.exports = knightjumps;
+console.log(knightjumps('(1 1)'))
+
+module.exports = knightjumps

@@ -32,8 +32,16 @@
   ]
 */
 
-function pascalTriangle(numRows) {
-
+function pascalTriangle(numRows, count = numRows - 1, acc = [[1]]) {
+  if (count === 0) return acc
+  const previous = [0, ...acc[acc.length - 1], 0]
+  let newArray = []
+  for (let i = 1; i < previous.length; i++) {
+    newArray = [...newArray, previous[i - 1] + previous[i]]
+  }
+  return pascalTriangle(numRows, count - 1, [...acc, newArray])
 }
 
-module.exports = pascalTriangle;
+console.log(pascalTriangle(6))
+
+module.exports = pascalTriangle
