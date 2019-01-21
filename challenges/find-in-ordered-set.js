@@ -10,8 +10,12 @@ findInOrderedSet(nums, 2);  -> false
  */
 
 
-function findInOrderedSet(arr, target) {
-
+function findInOrderedSet(array, int) {
+  if (array.length === 1) return array[0] === int;
+  const midpoint = Math.floor(array.length / 2);
+  return array[midpoint] > int
+    ? findInOrderedSet(array.slice(0, midpoint), int)
+    : findInOrderedSet(array.slice(midpoint), int);
 }
 
 
