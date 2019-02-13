@@ -2,7 +2,7 @@
 Month determines difficulty.
 
 ### Easy
-1. [ ] balanced-aprens.js
+1. [ ] balanced-parens.js
 1. [ ] bin-to-dec.js
 1. [ ] draw-stairs.js
 1. [x] fizzbuzz.js
