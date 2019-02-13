@@ -5,7 +5,7 @@ Month determines difficulty.
 1. [ ] balanced-parens.js
 1. [ ] bin-to-dec.js
 1. [ ] draw-stairs.js
-1. [x] fizzbuzz.js
+1. [ ] fizzbuzz.js
 1. [ ] highest-product.js
 1. [ ] kth-to-last-node.js
 1. [ ] match-word.js
