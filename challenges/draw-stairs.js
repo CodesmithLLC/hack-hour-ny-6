@@ -14,7 +14,17 @@
 */
 
 function drawStairs(n) {
+  for (let i = 1; i <= n; i += 1) {
+      console.log(`${' '.repeat(n - i)}`+`${'*'.repeat(i)}`);
+  }
 
+  /**
+   *   let staircase = new Array(n).fill(' ');
+   *    for (let i = 1; i <= n; i += 1) {
+   *      staircase[staircase.length - i] = '*';
+   *      console.log(staircase.join(''));
+   *   }
+   */
 }
 
 

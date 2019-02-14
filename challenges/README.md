@@ -4,7 +4,7 @@ Month determines difficulty.
 ### Easy
 1. [ ] balanced-parens.js
 1. [ ] bin-to-dec.js
-1. [ ] draw-stairs.js
+1. [x] draw-stairs.js
 1. [x] fizzbuzz.js
 1. [ ] highest-product.js
 1. [ ] kth-to-last-node.js
@@ -14,7 +14,7 @@ Month determines difficulty.
 1. [ ] pow.js
 1. [ ] reverse-in-place.js
 1. [ ] roman-numeral.js
-1. [ ] string-rotation.js
+1. [x] string-rotation.js
 1. [ ] subset-sum.js
 1. [ ] zip-linked-lists.js
 
