@@ -10,7 +10,7 @@ Month determines difficulty.
 1. [ ] kth-to-last-node.js
 1. [ ] match-word.js
 1. [ ] max-stack.js
-1. [ ] mode-mean.js
+1. [o] mode-mean.js
 1. [ ] pow.js
 1. [ ] reverse-in-place.js
 1. [ ] roman-numeral.js
